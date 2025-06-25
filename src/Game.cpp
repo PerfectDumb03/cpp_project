@@ -1,4 +1,4 @@
-#include "Game.h"
+#include "../include/Game.h"
 #include <iostream>
 
 Game::Game(const std::string& cascadePath) : frameWidth(0), frameHeight(0) {
