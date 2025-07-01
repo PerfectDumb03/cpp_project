@@ -49,5 +49,9 @@ void Game::run() {
         cv::imshow(windowName, frame);
         int key = cv::waitKey(10);
         if (key == 27) break; // ESC to exit
+        // Break if the window is closed using the red X
+        if (cv::getWindowProperty(windowName, cv::WND_PROP_VISIBLE) < 1) {
+            break;
+        }
     }
 }
