@@ -21,11 +21,19 @@ public:
     Shape(int x, int y, std::array<int,3> color);
     virtual ~Shape() = default;
 
+
     virtual bool checkCollision(const Shape& FaceRect); //checks if the shape collides with Face-Rect
     void move(); //moves shape for the next frame
     virtual bool checkOutOfBounds(int frameHeight); //checks if shape is completely out of bounds
-    void randomizeColor();
+
+
+    int getX();
+    int getY();
     void setSpeed(int newValue);
     void setThickness(int newValue);
+
+
+private:
+    void randomizeColor();
 };
 #endif //SHAPE_H

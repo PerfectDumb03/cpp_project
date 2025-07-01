@@ -31,6 +31,14 @@ void Shape::randomizeColor() {
     }
 }
 
+int Shape::getX() {
+    return m_x;
+}
+
+int Shape::getY() {
+    return m_y;
+}
+
 void Shape::setSpeed(int newValue) {
     m_speed = newValue;
 }
