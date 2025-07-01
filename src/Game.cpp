@@ -30,7 +30,7 @@ bool Game::initialize() {
         std::cerr << "Error: Could not load Haar cascade file." << std::endl;
         return false;
     }
-    cv::namedWindow(windowName, cv::WINDOW_AUTOSIZE);
+    cv::namedWindow(windowName, cv::WINDOW_NORMAL);
     return true;
 }
 
@@ -41,11 +41,16 @@ void Game::run() {
         cap >> frame;
         if (frame.empty()) break;
         cv::flip(frame, frame, 1);
+        int windowWidth = cv::getWindowImageRect(windowName).width;
+        int windowHeight = cv::getWindowImageRect(windowName).height;;
+        cv::Mat resizedFrame;
+        cv::resize(frame, resizedFrame, cv::Size(windowWidth, windowHeight));
         std::vector<cv::Rect> faces;
-        faceCascade.detectMultiScale(frame, faces, 1.1, 3, 0, cv::Size(60, 60));
+        faceCascade.detectMultiScale(resizedFrame, faces, 1.1, 3, 0, cv::Size(60, 60));
         for (const auto& face : faces) {
-            cv::rectangle(frame, face, cv::Scalar(0, 255, 0), 2);
+            cv::rectangle(resizedFrame, face, cv::Scalar(0, 255, 0), 2);
         }
+        frame = resizedFrame;
         cv::imshow(windowName, frame);
         int key = cv::waitKey(10);
         if (key == 27) break; // ESC to exit
