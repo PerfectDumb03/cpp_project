@@ -15,6 +15,10 @@ set(Sources
     src/main.cpp
     src/Game.cpp
     include/Game.h
+    src/Shape.cpp
+    include/Shape.h
+    src/ShapeSquare.cpp
+    include/ShapeSquare.h
 )
 
 add_executable(FaceDetectionStarter "${Sources}")
