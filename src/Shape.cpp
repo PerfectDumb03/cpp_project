@@ -16,7 +16,7 @@ bool Shape::checkOutOfBounds(int frameHeight) {
     return m_y > frameHeight;
 }
 
-bool Shape::checkCollision(const Shape& FaceRect) {
+bool Shape::checkCollision(ShapeSquare& FaceRect) {
     return true;
 }
 

@@ -20,7 +20,7 @@ public:
     int getHeight();
     int getWidth();
 
-    bool checkCollision(ShapeSquare& FaceRect); // checks if the square collides with Face-Rect
+    bool checkCollision(ShapeSquare& FaceRect) override; // checks if the square collides with Face-Rect
 };
 
 

@@ -6,6 +6,7 @@
 #define SHAPE_H
 
 
+class ShapeSquare;
 
 class Shape {
 protected:
@@ -18,7 +19,7 @@ public:
     virtual ~Shape() = default;
 
 
-    virtual bool checkCollision(const Shape& FaceRect); //checks if the shape collides with Face-Rect
+    virtual bool checkCollision(ShapeSquare& FaceRect); //checks if the shape collides with Face-Rect
     void move(); //moves shape for the next frame
     virtual bool checkOutOfBounds(int frameHeight); //checks if shape is completely out of bounds
 

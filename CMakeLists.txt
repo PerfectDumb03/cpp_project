@@ -21,6 +21,10 @@ set(Sources
     include/ShapeSquare.h
         src/GraphicalSquare.cpp
         include/GraphicalSquare.h
+        src/ShapeCircle.cpp
+        include/ShapeCircle.h
+        src/GraphicalCircle.cpp
+        include/GraphicalCircle.h
 )
 
 add_executable(FaceDetectionStarter "${Sources}")

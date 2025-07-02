@@ -2,6 +2,7 @@
 #include <iostream>
 
 #include "../include/GraphicalSquare.h"
+#include "../include/GraphicalCircle.h"
 
 Game::Game(const std::string& cascadePath) : frameWidth(0), frameHeight(0) {
     faceCascade.load(cascadePath);
@@ -40,6 +41,7 @@ void Game::run() {
     if (!initialize()) return;
     cv::Mat frame;
     ShapeSquare square(200, 200, 100, 100);
+    ShapeCircle circle (400, 200, 30);
     while (true) {
         cap >> frame;
         if (frame.empty()) break;
@@ -49,14 +51,17 @@ void Game::run() {
         for (const auto& face : faces) {
             GraphicalSquare faceRect(face);
             faceRect.draw(frame);
-            if (faceRect.checkCollision(square)) {
+            if (square.checkCollision(faceRect)) {
                 std::cout << "Collision!" << std::endl;
             }
         }
 
         GraphicalSquare gsquare(square, -1, {0, 255, 0});
+        GraphicalCircle gcircle(circle, -1, {0, 255, 0});
         gsquare.draw(frame);
-        //square.move();
+        gcircle.draw(frame);
+        square.move();
+        circle.move();
 
 
         cv::imshow(windowName, frame);

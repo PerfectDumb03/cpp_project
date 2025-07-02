@@ -5,8 +5,6 @@
 #ifndef GRAPHICALSQUARE_H
 #define GRAPHICALSQUARE_H
 #include "ShapeSquare.h"
-#include <array>
-#include <random>
 #include <opencv2/core/types.hpp>
 #include <opencv2/imgproc.hpp>
 
@@ -14,7 +12,7 @@
 
 
 class GraphicalSquare : public ShapeSquare {
-protected:
+private:
     int m_thickness = -1;
     std::array<int,3> m_color; // Pointer to RGB color values
 public:

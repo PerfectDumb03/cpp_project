@@ -3,6 +3,7 @@
 //
 
 #include "../include/GraphicalSquare.h"
+#include <random>
 
 GraphicalSquare::GraphicalSquare(int x, int y, int height, int width, int thickness, std::array<int, 3> color)
     :ShapeSquare(x, y, height, width), m_thickness(thickness), m_color(color){
