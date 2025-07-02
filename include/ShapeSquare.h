@@ -8,16 +8,12 @@
 
 #include "../include/Shape.h"
 
-namespace cv {
-    class Rect;
-}
-
 class ShapeSquare : public Shape {
 protected:
     int m_height;
     int m_width;
 public:
-    ShapeSquare(int x, int y, int height, int width, std::array<int,3> color);
+    ShapeSquare(int x, int y, int height, int width);
 
     ~ShapeSquare() override = default;
 

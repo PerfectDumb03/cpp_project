@@ -6,10 +6,10 @@
 
 
 
-ShapeSquare::ShapeSquare(int x, int y, int height, int width, std::array<int,3> color):Shape(x, y, color), m_height(height), m_width(width){
+ShapeSquare::ShapeSquare(int x, int y, int height, int width):Shape(x, y), m_height(height), m_width(width){
 }
 
-bool ShapeSquare::checkCollision(ShapeSquare& FaceRect) {
+bool ShapeSquare::checkCollision(ShapeSquare& FaceRect){
     if (m_x < FaceRect.getX() + FaceRect.getWidth() &&   // rechte Kante von Rechteck 1 > linke Kante von Rechteck 2
         m_x + m_width > FaceRect.getX() &&               // linke Kante von Rechteck 1 < rechte Kante von Rechteck 2
         m_y < FaceRect.getY() + FaceRect.getHeight() &&  // untere Kante von Rechteck 1 > obere Kante von Rechteck 2
@@ -17,4 +17,12 @@ bool ShapeSquare::checkCollision(ShapeSquare& FaceRect) {
         return true;
         }
     return false;
+}
+
+
+int ShapeSquare::getHeight() {
+    return m_height;
+}
+int ShapeSquare::getWidth() {
+    return m_width;
 }
