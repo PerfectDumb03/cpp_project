@@ -20,6 +20,7 @@ protected:
 public:
     GraphicalSquare(int x, int y, int height, int width, int thickness=-1, std::array<int,3> color={-1,-1,-1});
     GraphicalSquare(ShapeSquare& square, int thickness=-1, std::array<int,3> color={-1,-1,-1});
+    GraphicalSquare(const cv::Rect& rect);
     ~GraphicalSquare() override = default;
 
     void draw(cv::Mat& frame);

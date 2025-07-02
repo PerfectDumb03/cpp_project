@@ -10,11 +10,12 @@ GraphicalSquare::GraphicalSquare(int x, int y, int height, int width, int thickn
         randomizeColor();
     }
 }
-
 GraphicalSquare::GraphicalSquare(ShapeSquare &square, int thickness, std::array<int, 3> color)
     :ShapeSquare(square.getX(), square.getY(), square.getHeight(), square.getWidth()), m_thickness(thickness), m_color(color){
-
 }
+GraphicalSquare::GraphicalSquare(const cv::Rect &rect)
+:ShapeSquare(rect.x, rect.y, rect.height, rect.width), m_thickness(2), m_color({0,255,0}){}
+
 
 void GraphicalSquare::draw(cv::Mat& frame) {
     cv::rectangle(frame, getRect(), getColor(), getThickness());
