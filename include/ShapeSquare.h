@@ -13,14 +13,19 @@ protected:
     int m_height;
     int m_width;
 public:
-    ShapeSquare(int x, int y, int height, int width, int thickness, std::array<int,3> color);
+    ShapeSquare(int x, int y, int height, int width=-1, int thickness=-1, std::array<int,3> color={-1,-1,-1});
 
     ~ShapeSquare() override = default;
 
     int getHeight();
     int getWidth();
 
+
     bool checkCollision(ShapeSquare& FaceRect) override; // checks if the square collides with Face-Rect
+private:
+    void randomizeSize(std::mt19937 gen) override;
+    void setHeight(int newValue);
+    void setWidth(int newValue);
 };
 
 

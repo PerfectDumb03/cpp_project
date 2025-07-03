@@ -19,7 +19,8 @@ public:
     bool checkCollision(ShapeSquare &FaceRect) override;
     int getRadius();
     cv::Point  getCenter();
-
+    void setRadius(int newValue);
+    void randomizeSize(std::mt19937 gen) override;
 };
 
 

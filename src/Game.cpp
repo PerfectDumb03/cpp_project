@@ -40,8 +40,8 @@ bool Game::initialize() {
 void Game::run() {
     if (!initialize()) return;
     cv::Mat frame;
-    GraphicalSquare gsquare(200, 0, 100, 100);
-    GraphicalCircle gcircle(400, 0, 30);
+    GraphicalSquare gsquare(200, 0);
+    GraphicalCircle gcircle(400, 0);
     while (true) {
         cap >> frame;
         if (frame.empty()) break;
