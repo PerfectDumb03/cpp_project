@@ -13,6 +13,7 @@ include_directories(${OpenCV_INCLUDE_DIRS})
 
 set(Includes
         include/Game.h
+        include/GameMode.h
         include/GraphicalCircle.h
         include/GraphicalSquare.h
         include/InputHandler.h
