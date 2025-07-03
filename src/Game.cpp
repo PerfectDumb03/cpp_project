@@ -1,6 +1,9 @@
 #include "../include/Game.h"
 #include <iostream>
 
+#include "../include/GraphicalSquare.h"
+#include "../include/GraphicalCircle.h"
+
 Game::Game(const std::string& cascadePath) : frameWidth(0), frameHeight(0) {
     faceCascade.load(cascadePath);
 }
@@ -37,6 +40,8 @@ bool Game::initialize() {
 void Game::run() {
     if (!initialize()) return;
     cv::Mat frame;
+    GraphicalSquare gsquare(200, 0, 100, 100);
+    GraphicalCircle gcircle(400, 0, 30);
     while (true) {
         cap >> frame;
         if (frame.empty()) break;
@@ -44,8 +49,20 @@ void Game::run() {
         std::vector<cv::Rect> faces;
         faceCascade.detectMultiScale(frame, faces, 1.1, 3, 0, cv::Size(60, 60));
         for (const auto& face : faces) {
-            cv::rectangle(frame, face, cv::Scalar(0, 255, 0), 2);
+            GraphicalSquare faceRect(face);
+            faceRect.draw(frame);
+            if (gsquare.checkCollision(faceRect)) {
+                std::cout << "Collision!" << std::endl;
+            }
         }
+
+
+        gsquare.draw(frame);
+        gcircle.draw(frame);
+        gsquare.move();
+        gcircle.move();
+
+
         cv::imshow(windowName, frame);
         int key = cv::waitKey(10);
         if (key == 27) break; // ESC to exit
