@@ -11,31 +11,31 @@ find_package(OpenCV REQUIRED)
 # Include OpenCV directories
 include_directories(${OpenCV_INCLUDE_DIRS})
 
-set(Sources
-    src/main.cpp
-    src/Game.cpp
-    include/Game.h
-    src/Shape.cpp
-    include/Shape.h
-    src/ShapeSquare.cpp
-    include/ShapeSquare.h
-        src/GraphicalSquare.cpp
-        include/GraphicalSquare.h
-        src/ShapeCircle.cpp
-        include/ShapeCircle.h
-        src/GraphicalCircle.cpp
-        include/GraphicalCircle.h
-        src/main.cpp
-        src/Game.cpp
-        src/inputHandler.cpp
-        src/player.cpp
-        src/gameStart.cpp
+set(Includes
         include/Game.h
+        include/GraphicalCircle.h
+        include/GraphicalSquare.h
         include/InputHandler.h
         include/Player.h
+        include/Shape.h
+        include/ShapeCircle.h
+        include/ShapeSquare.h
 )
 
-add_executable(FaceDetectionStarter "${Sources}")
+set(Sources
+        src/Game.cpp
+        src/gameStart.cpp
+        src/GraphicalCircle.cpp
+        src/GraphicalSquare.cpp
+        src/inputHandler.cpp
+        src/main.cpp
+        src/player.cpp
+        src/Shape.cpp
+        src/ShapeCircle.cpp
+        src/ShapeSquare.cpp
+)
+
+add_executable(FaceDetectionStarter "${Includes}" "${Sources}")
 
 target_link_libraries(FaceDetectionStarter ${OpenCV_LIBS})
 
