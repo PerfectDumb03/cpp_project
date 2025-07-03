@@ -48,7 +48,6 @@ std::vector<cv::Rect> Game::getFaceRects(cv::Mat& frame) {
 void Game::run() {
     if (!initialize()) return;
     cv::Mat frame;
-    GameMode gameMode;
     CatchSquares currentGame(10);
     while (true) {
         cap >> frame;
@@ -76,6 +75,7 @@ void Game::run() {
         if (key == 27) break; // ESC to exit
         // Break if the window is closed using the red X
         if (cv::getWindowProperty(windowName, cv::WND_PROP_VISIBLE) < 1) {
+            cv::destroyWindow(windowName);
             break;
         }
     }

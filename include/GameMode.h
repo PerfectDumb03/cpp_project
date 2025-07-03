@@ -5,7 +5,11 @@
 #ifndef GAME_MODE_H
 #define GAME_MODE_H
 
-#include "Game.h"
+#include "Player.h"
+#include <opencv2/opencv.hpp>
+#include <string>
+
+class Game;
 
 class GameMode : public Player {
 public:
@@ -19,7 +23,8 @@ public:
     int getGameMode() const;
 
     void setObjectCount();
-    int getObjectCount() const;
+    virtual void setObjectCount(int newValue) {};
+    int getObjectCount();
 
     void gameStartInput();
     virtual void gameOver();

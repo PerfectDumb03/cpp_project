@@ -5,7 +5,9 @@
 #include "../include/CatchSquares.h"
 #include "../include/GameMode.h"
 
-CatchSquares::CatchSquares(int objectCount):m_objectCount(objectCount){
+//temporary for working version
+CatchSquares::CatchSquares(int catschSquaresobjectCount){
+    objectCount = catschSquaresobjectCount;
 }
 
 std::vector<GraphicalSquare> CatchSquares::getFaceSquares() {
@@ -17,17 +19,11 @@ std::list<GraphicalSquare> CatchSquares::getSquares() {
 std::list<GraphicalCircle> CatchSquares::getCircles() {
     return m_circles;
 }
-int CatchSquares::getObjectCount() {
-    return m_objectCount;
-}
 int CatchSquares::getFrameCount() {
     return m_frameCount;
 }
 void CatchSquares::setFrameCount(int newValue) {
     m_frameCount = newValue;
-}
-void CatchSquares::setObjectCount(int newValue) {
-    m_objectCount = newValue;
 }
 void CatchSquares::addFaceSquare(GraphicalSquare& newFace) {
     m_faceSquares.push_back(newFace);
@@ -38,7 +34,9 @@ void CatchSquares::addSquare(GraphicalSquare& newSquare) {
 void CatchSquares::addCircle(GraphicalCircle& newCircle) {
     m_circles.push_back(newCircle);
 }
-
+void CatchSquares::setObjectCount(int newValue) {
+    objectCount = newValue;
+}
 
 void CatchSquares::renderGraphics(cv::Mat &frame) {
     for (auto& face : m_faceSquares) { //should be const for best practice
@@ -132,13 +130,13 @@ void CatchSquares::checkFaceCollision() {
 }
 
 void CatchSquares::increaseScore() {
-    m_score++;
-    std::cout << "Score increased!" << m_score << std::endl;
+    addScore(1);
+    std::cout << "Score increased!" << getScore() << std::endl;
 }
 
 void CatchSquares::decreaseScore() {
-    m_score--;
-    std::cout << "Score decreased!" << m_score << std::endl;
+    subtractScore(1);
+    std::cout << "Score decreased!" << getScore() << std::endl;
 }
 
 

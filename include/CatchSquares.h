@@ -12,8 +12,6 @@
 
 class CatchSquares : public GameMode{
 private:
-    int m_score = 0;
-    int m_objectCount;
     int m_frameCount = 0;
     std::vector<GraphicalSquare> m_faceSquares;
     std::list<GraphicalSquare> m_squares;
@@ -26,11 +24,10 @@ public:
     std::vector<GraphicalSquare> getFaceSquares();
     std::list<GraphicalSquare> getSquares();
     std::list<GraphicalCircle> getCircles();
-    int getObjectCount();
     int getFrameCount();
 
     void setFrameCount(int newValue);
-    void setObjectCount(int newValue);
+    void setObjectCount(int newValue) override;
     void addFaceSquare(GraphicalSquare& newFace);
     void addSquare(GraphicalSquare& newSquare);
     void addCircle(GraphicalCircle& newCircle);

@@ -1,14 +1,12 @@
 #ifndef GAME_H
 #define GAME_H
 
-#include "Player.h"
-#include <opencv2/opencv.hpp>
-#include <string>
+#include "GameMode.h"
 
 class Game {
 public:
     Game(const std::string& cascadePath);
-    ~Game();
+    virtual ~Game();
     bool initialize();
     void run();
     std::vector<cv::Rect> getFaceRects(cv::Mat& frame);

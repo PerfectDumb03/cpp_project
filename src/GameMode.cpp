@@ -72,7 +72,6 @@ void GameMode::setObjectCount() {
             std::cout << "Invalid input. Please enter a number.\n";
             continue;
         }
-
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Remove additional input
 
         if (objectCount < 1) {
@@ -85,7 +84,7 @@ void GameMode::setObjectCount() {
     }
 }
 
-int GameMode::getObjectCount() const {
+int GameMode::getObjectCount() {
     return objectCount;
 }
 
