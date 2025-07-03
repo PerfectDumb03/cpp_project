@@ -5,30 +5,23 @@
 #ifndef GRAPHICALSQUARE_H
 #define GRAPHICALSQUARE_H
 #include "ShapeSquare.h"
-#include <opencv2/core/types.hpp>
+
 #include <opencv2/imgproc.hpp>
 
 
 
 
 class GraphicalSquare : public ShapeSquare {
-private:
-    int m_thickness = -1;
-    std::array<int,3> m_color; // Pointer to RGB color values
+
 public:
     GraphicalSquare(int x, int y, int height, int width, int thickness=-1, std::array<int,3> color={-1,-1,-1});
     GraphicalSquare(ShapeSquare& square, int thickness=-1, std::array<int,3> color={-1,-1,-1});
-    GraphicalSquare(const cv::Rect& rect);
+    GraphicalSquare(const cv::Rect& rect, int thickness=2, std::array<int,3> color={0,255,0});
     ~GraphicalSquare() override = default;
 
     void draw(cv::Mat& frame);
 
-    void randomizeColor();
-    void setThickness(int newValue);
-
     cv::Rect getRect();
-    cv::Scalar getColor();
-    int getThickness();
 
 };
 

@@ -4,7 +4,8 @@
 
 #ifndef SHAPE_H
 #define SHAPE_H
-
+#include <array>
+#include <opencv2/core/types.hpp>
 
 class ShapeSquare;
 
@@ -13,9 +14,11 @@ protected:
     int m_x;
     int m_y;
     int m_speed = 5;
+    int m_thickness;
+    std::array<int,3> m_color;
 
 public:
-    Shape(int x, int y);
+    Shape(int x, int y, int thickness, std::array<int,3> color);
     virtual ~Shape() = default;
 
 
@@ -26,7 +29,11 @@ public:
 
     int getX();
     int getY();
-    void setSpeed(int newValue);
     int getSpeed();
+    cv::Scalar getColor();
+    int getThickness();
+
+    void setSpeed(int newValue);
+
 };
 #endif //SHAPE_H

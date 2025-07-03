@@ -7,8 +7,10 @@
 #include "../include/ShapeCircle.h"
 #include "../include/ShapeSquare.h"
 
-ShapeCircle::ShapeCircle(int x, int y, int radius)
-    :Shape(x, y), m_radius(radius){}
+
+
+ShapeCircle::ShapeCircle(int x, int y, int radius, int thickness, std::array<int,3> color)
+    :Shape(x, y, thickness, color), m_radius(radius){}
 
 bool ShapeCircle::checkCollision(ShapeSquare &FaceRect) {
     // Find the closest point on the rectangle to the circle's center
@@ -29,11 +31,8 @@ bool ShapeCircle::checkCollision(ShapeSquare &FaceRect) {
 int ShapeCircle::getRadius() {
     return m_radius;
 }
-int ShapeCircle::getX() {
-    return m_x;
-}
-int ShapeCircle::getY() {
-    return m_y;
-}
+cv::Point ShapeCircle::getCenter() {
+        return {m_x, m_y};
+    }
 
 

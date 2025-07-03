@@ -40,8 +40,8 @@ bool Game::initialize() {
 void Game::run() {
     if (!initialize()) return;
     cv::Mat frame;
-    ShapeSquare square(200, 200, 100, 100);
-    ShapeCircle circle (400, 200, 30);
+    GraphicalSquare gsquare(200, 0, 100, 100);
+    GraphicalCircle gcircle(400, 0, 30);
     while (true) {
         cap >> frame;
         if (frame.empty()) break;
@@ -51,17 +51,16 @@ void Game::run() {
         for (const auto& face : faces) {
             GraphicalSquare faceRect(face);
             faceRect.draw(frame);
-            if (square.checkCollision(faceRect)) {
+            if (gsquare.checkCollision(faceRect)) {
                 std::cout << "Collision!" << std::endl;
             }
         }
 
-        GraphicalSquare gsquare(square, -1, {0, 255, 0});
-        GraphicalCircle gcircle(circle, -1, {0, 255, 0});
+
         gsquare.draw(frame);
         gcircle.draw(frame);
-        square.move();
-        circle.move();
+        gsquare.move();
+        gcircle.move();
 
 
         cv::imshow(windowName, frame);

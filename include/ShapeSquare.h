@@ -13,7 +13,7 @@ protected:
     int m_height;
     int m_width;
 public:
-    ShapeSquare(int x, int y, int height, int width);
+    ShapeSquare(int x, int y, int height, int width, int thickness, std::array<int,3> color);
 
     ~ShapeSquare() override = default;
 

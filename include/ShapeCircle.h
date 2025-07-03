@@ -5,20 +5,20 @@
 #ifndef SHAPECIRCLE_H
 #define SHAPECIRCLE_H
 #include "Shape.h"
-#include "ShapeSquare.h"
+
+class ShapeSquare; //forward declaration
 
 
 class ShapeCircle : public Shape{
 protected:
     int m_radius;
 public:
-    ShapeCircle(int x, int y, int radius);
+    ShapeCircle(int x, int y, int radius, int thickness, std::array<int,3> color);
     ~ShapeCircle() override = default;
 
     bool checkCollision(ShapeSquare &FaceRect) override;
     int getRadius();
-    int getX();
-    int getY();
+    cv::Point  getCenter();
 
 };
 

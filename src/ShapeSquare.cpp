@@ -6,7 +6,8 @@
 
 
 
-ShapeSquare::ShapeSquare(int x, int y, int height, int width):Shape(x, y), m_height(height), m_width(width){
+ShapeSquare::ShapeSquare(int x, int y, int height, int width, int thickness, std::array<int,3> color)
+:Shape(x, y, thickness, color), m_height(height), m_width(width){
 }
 
 bool ShapeSquare::checkCollision(ShapeSquare& FaceRect){
