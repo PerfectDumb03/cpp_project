@@ -1,6 +1,7 @@
 #include "../include/Game.h"
 #include <iostream>
 
+#include "../include/GameMode.h"
 #include "../include/GraphicalSquare.h"
 #include "../include/GraphicalCircle.h"
 
@@ -40,6 +41,7 @@ bool Game::initialize() {
 void Game::run() {
     if (!initialize()) return;
     cv::Mat frame;
+    GameMode gameMode;
     GraphicalSquare gsquare(200, 0);
     GraphicalCircle gcircle(400, 0);
     while (true) {
@@ -53,15 +55,15 @@ void Game::run() {
             faceRect.draw(frame);
             if (gsquare.checkCollision(faceRect)) {
                 std::cout << "Collision!" << std::endl;
+                cv::destroyWindow(windowName);
+                return;
             }
         }
-
 
         gsquare.draw(frame);
         gcircle.draw(frame);
         gsquare.move();
         gcircle.move();
-
 
         cv::imshow(windowName, frame);
         int key = cv::waitKey(10);

@@ -1,12 +1,13 @@
 #include "../include/Game.h"
+#include "../include/GameMode.h"
 #include <string>
 
 int main() {
-    InputHandler input;
-    Player player;
+    GameMode gameMode;
     std::string cascadeFilePath = "../haarcascade_frontalface_default.xml";
     Game game(cascadeFilePath);
-    game.gameStartInput(input, player);
+    gameMode.gameStartInput();
     game.run();
+    gameMode.gameOver();
     return 0;
 }

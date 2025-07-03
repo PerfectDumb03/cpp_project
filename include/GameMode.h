@@ -7,11 +7,26 @@
 
 #include "Game.h"
 
-class GameMode {
+class GameMode : public Player {
 public:
     GameMode() = default;
-    virtual ~GameMode() = default;
-    virtual bool isGameOver() = 0;
+    ~GameMode() override = default;
+
+
+    void setPlayerNameFromInput();
+
+    void setGameMode();
+    int getGameMode() const;
+
+    void setObjectCount();
+    int getObjectCount() const;
+
+    void gameStartInput();
+    virtual void gameOver();
+
+protected:
+    int gameMode = 0;
+    int objectCount = 0;
 };
 
 #endif // GAME_MODE_H
