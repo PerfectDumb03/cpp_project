@@ -25,6 +25,14 @@ set(Sources
         include/ShapeCircle.h
         src/GraphicalCircle.cpp
         include/GraphicalCircle.h
+        src/main.cpp
+        src/Game.cpp
+        src/inputHandler.cpp
+        src/player.cpp
+        src/gameStart.cpp
+        include/Game.h
+        include/InputHandler.h
+        include/Player.h
 )
 
 add_executable(FaceDetectionStarter "${Sources}")
