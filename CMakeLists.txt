@@ -16,6 +16,7 @@ set(Sources
         src/Game.cpp
         src/inputHandler.cpp
         src/player.cpp
+        src/gameStart.cpp
         include/Game.h
         include/InputHandler.h
         include/Player.h
