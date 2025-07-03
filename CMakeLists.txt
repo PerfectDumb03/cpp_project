@@ -16,7 +16,6 @@ set(Includes
         include/GameMode.h
         include/GraphicalCircle.h
         include/GraphicalSquare.h
-        include/InputHandler.h
         include/Player.h
         include/Shape.h
         include/ShapeCircle.h
@@ -27,10 +26,8 @@ set(Includes
 set(Sources
         src/Game.cpp
         src/GameMode.cpp
-        src/gameStart.cpp
         src/GraphicalCircle.cpp
         src/GraphicalSquare.cpp
-        src/inputHandler.cpp
         src/main.cpp
         src/player.cpp
         src/Shape.cpp

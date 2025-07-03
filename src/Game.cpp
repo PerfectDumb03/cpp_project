@@ -2,6 +2,7 @@
 #include <iostream>
 
 #include "../include/CatchSquares.h"
+#include "../include/GameMode.h"
 #include "../include/GraphicalSquare.h"
 #include "../include/GraphicalCircle.h"
 
@@ -47,7 +48,7 @@ std::vector<cv::Rect> Game::getFaceRects(cv::Mat& frame) {
 void Game::run() {
     if (!initialize()) return;
     cv::Mat frame;
-
+    GameMode gameMode;
     CatchSquares currentGame(50);
     while (true) {
         cap >> frame;

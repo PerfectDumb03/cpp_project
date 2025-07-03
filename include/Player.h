@@ -10,19 +10,19 @@
 class Player {
 public:
     Player() {};
-    ~Player() {};
+    virtual ~Player() = default;
 
     void setName(std::string name);
     std::string getName() const;
 
-     void setScore(int score);
+    void setScore(int score);
     int getScore() const;
     void resetScore();
     void addScore(int points);
     void subtractScore(int points);
 
-private:
-    std::string playerName;
+protected:
+    std::string playerName = "DefaultPlayer";
     int playerScore = 0;
 };
 
