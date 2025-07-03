@@ -13,6 +13,7 @@ public:
     bool initialize();
     void run();
     void gameStartInput(InputHandler& input, Player& player);
+    std::vector<cv::Rect> getFaceRects(cv::Mat& frame);
 private:
     cv::VideoCapture cap;
     cv::CascadeClassifier faceCascade;

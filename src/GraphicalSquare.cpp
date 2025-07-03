@@ -14,6 +14,9 @@ GraphicalSquare::GraphicalSquare(ShapeSquare &square, int thickness, std::array<
 GraphicalSquare::GraphicalSquare(const cv::Rect &rect, int thickness, std::array<int, 3> color)
 :ShapeSquare(rect.x, rect.y, rect.height, rect.width, thickness, color){}
 
+GraphicalSquare::GraphicalSquare(int x, std::array<int, 3> color)
+    :ShapeSquare(x, 0, -1, -1, -1, color){}
+
 
 void GraphicalSquare::draw(cv::Mat& frame) {
     cv::rectangle(frame, getRect(), getColor(), getThickness());

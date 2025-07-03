@@ -15,7 +15,7 @@ protected:
 public:
     ShapeSquare(int x, int y, int height, int width=-1, int thickness=-1, std::array<int,3> color={-1,-1,-1});
 
-    ~ShapeSquare() override = default;
+    //~ShapeSquare() override = default;
 
     int getHeight();
     int getWidth();

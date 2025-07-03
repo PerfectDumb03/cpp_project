@@ -11,7 +11,7 @@ class GameMode {
 public:
     GameMode() = default;
     virtual ~GameMode() = default;
-    virtual bool isGameOver() = 0;
+    //virtual void isGameOver() = 0;
 };
 
 #endif // GAME_MODE_H

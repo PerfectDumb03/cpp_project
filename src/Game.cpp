@@ -1,6 +1,7 @@
 #include "../include/Game.h"
 #include <iostream>
 
+#include "../include/CatchSquares.h"
 #include "../include/GraphicalSquare.h"
 #include "../include/GraphicalCircle.h"
 
@@ -36,32 +37,34 @@ bool Game::initialize() {
     cv::namedWindow(windowName, cv::WINDOW_AUTOSIZE);
     return true;
 }
+std::vector<cv::Rect> Game::getFaceRects(cv::Mat& frame) {
+    std::vector<cv::Rect> faces;
+    faceCascade.detectMultiScale(frame, faces, 1.1, 3, 0, cv::Size(60, 60));
+    return faces;
+}
+
 
 void Game::run() {
     if (!initialize()) return;
     cv::Mat frame;
-    GraphicalSquare gsquare(200, 0);
-    GraphicalCircle gcircle(400, 0);
+
+    CatchSquares currentGame(50);
     while (true) {
         cap >> frame;
         if (frame.empty()) break;
         cv::flip(frame, frame, 1);
-        std::vector<cv::Rect> faces;
-        faceCascade.detectMultiScale(frame, faces, 1.1, 3, 0, cv::Size(60, 60));
-        for (const auto& face : faces) {
-            GraphicalSquare faceRect(face);
-            faceRect.draw(frame);
-            if (gsquare.checkCollision(faceRect)) {
-                std::cout << "Collision!" << std::endl;
-            }
+        std::vector<cv::Rect> faces = getFaceRects(frame);
+        for (auto& face : faces) {
+            GraphicalSquare faceSquare(face, 2, {255, 0, 0});
+            currentGame.addFaceSquare(faceSquare);
         }
 
-
-        gsquare.draw(frame);
-        gcircle.draw(frame);
-        gsquare.move();
-        gcircle.move();
-
+        currentGame.createObjects();
+        currentGame.renderGraphics(frame);
+        currentGame.checkFaceCollision();
+        currentGame.move();
+        currentGame.removeOutOfBounds();
+        currentGame.resetFaceSquares();
 
         cv::imshow(windowName, frame);
         int key = cv::waitKey(10);

@@ -5,6 +5,9 @@
 #include "../include/GraphicalCircle.h"
 #include <opencv2/imgproc.hpp>
 
+GraphicalCircle::GraphicalCircle(int x, std::array<int, 3> color)
+    : ShapeCircle(x, 0, -1, -1, color){
+}
 
 GraphicalCircle::GraphicalCircle(int x, int y, int radius, int thickness, std::array<int, 3> color)
     : ShapeCircle(x, y, radius, thickness, color){

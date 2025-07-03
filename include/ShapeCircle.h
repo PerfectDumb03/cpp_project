@@ -14,7 +14,7 @@ protected:
     int m_radius;
 public:
     ShapeCircle(int x, int y, int radius, int thickness, std::array<int,3> color);
-    ~ShapeCircle() override = default;
+    //~ShapeCircle() override = default;
 
     bool checkCollision(ShapeSquare &FaceRect) override;
     int getRadius();

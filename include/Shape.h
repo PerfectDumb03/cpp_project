@@ -21,7 +21,7 @@ protected:
 
 public:
     Shape(int x, int y, int thickness, std::array<int,3> color);
-    virtual ~Shape() = default;
+    virtual ~Shape();
 
 
     virtual bool checkCollision(ShapeSquare& FaceRect); //checks if the shape collides with Face-Rect

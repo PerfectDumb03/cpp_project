@@ -3,6 +3,8 @@
 //
 
 #include "../include/Shape.h"
+
+#include <iostream>
 #include <random>
 
 Shape::Shape(int x, int y, int thickness, std::array<int,3> color): m_x(x), m_y(y), m_thickness(thickness), m_color(color) {
@@ -14,7 +16,8 @@ Shape::Shape(int x, int y, int thickness, std::array<int,3> color): m_x(x), m_y(
     randomizeSpeed(gen);
     Shape::randomizeSize(gen);
 }
-
+Shape::~Shape() {
+};
 void Shape::move() {
     m_y += m_speed;
 }
