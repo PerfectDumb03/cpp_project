@@ -49,7 +49,7 @@ void Game::run() {
     if (!initialize()) return;
     cv::Mat frame;
     GameMode gameMode;
-    CatchSquares currentGame(50);
+    CatchSquares currentGame(10);
     while (true) {
         cap >> frame;
         if (frame.empty()) break;
@@ -66,6 +66,10 @@ void Game::run() {
         currentGame.move();
         currentGame.removeOutOfBounds();
         currentGame.resetFaceSquares();
+        if (currentGame.getObjectCount() == 0) {
+            cv::destroyWindow(windowName);
+            break;
+        }
 
         cv::imshow(windowName, frame);
         int key = cv::waitKey(10);

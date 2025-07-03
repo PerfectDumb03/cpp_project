@@ -57,7 +57,7 @@ void CatchSquares::createObjects() {
     int objectCount = getObjectCount();
     if (objectCount > 0) {
         int currentFrame = getFrameCount();
-        if (currentFrame % 50 == 0) {
+        if (currentFrame % 25 == 0) {
             if (circleChance()) {
                 GraphicalCircle circle(randXCoord(), {255, 0, 0});
                 addCircle(circle);
@@ -66,7 +66,7 @@ void CatchSquares::createObjects() {
                 GraphicalSquare square(randXCoord(),  {0, 255, 0});
                 addSquare(square);
             }
-            setObjectCount(objectCount--);
+            setObjectCount(--objectCount);
         }
     }
 }
