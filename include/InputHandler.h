@@ -9,9 +9,21 @@
 
 class InputHandler {
 public:
-    static std::string getPlayerName();
-    static int getGameMode();
-    static int getObjectCount();
+    InputHandler() {};
+    ~InputHandler() {};
+
+    void setPlayerName();
+    void setGameMode();
+    void setObjectCount();
+
+    std::string getPlayerName() const;
+    int getGameMode() const;
+    int getObjectCount() const;
+
+private:
+    std::string playerName;
+    int gameMode = 0;
+    int objectCount = 0;
 };
 
 #endif // INPUT_HANDLER_H

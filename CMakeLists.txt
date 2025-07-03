@@ -12,11 +12,13 @@ find_package(OpenCV REQUIRED)
 include_directories(${OpenCV_INCLUDE_DIRS})
 
 set(Sources
-    src/main.cpp
-    src/Game.cpp
-    include/Game.h
-    include/InputHandler.h
-    include/Player.h
+        src/main.cpp
+        src/Game.cpp
+        src/inputHandler.cpp
+        src/player.cpp
+        include/Game.h
+        include/InputHandler.h
+        include/Player.h
 )
 
 add_executable(FaceDetectionStarter "${Sources}")

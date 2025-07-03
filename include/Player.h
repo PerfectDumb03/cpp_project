@@ -8,15 +8,22 @@
 #include <string>
 
 class Player {
-    public:
-        Player(const std::string& name);
-        std::string getName() const;
-        int getScore() const;
-        void addScore(int points);
-        void subtractScore(int points);
-    private:
-        std::string name;
-        int score;
+public:
+    Player() {};
+    ~Player() {};
+
+    void setName(std::string name);
+    std::string getName() const;
+
+     void setScore(int score);
+    int getScore() const;
+    void resetScore();
+    void addScore(int points);
+    void subtractScore(int points);
+
+private:
+    std::string playerName;
+    int playerScore = 0;
 };
 
 #endif // PLAYER_H
