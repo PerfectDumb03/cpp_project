@@ -2,7 +2,7 @@
 #include <iostream>
 
 #include "../include/CatchSquares.h"
-#include "../include/GameMode.h"
+#include "../include/GameHandler.h"
 #include "../include/GraphicalSquare.h"
 #include "../include/GraphicalCircle.h"
 
@@ -45,7 +45,7 @@ std::vector<cv::Rect> Game::getFaceRects(cv::Mat& frame) {
 }
 
 
-void Game::run(GameMode& gameMode) {
+void Game::run(GameHandler& gameMode) {
     if (!initialize()) return;
     cv::Mat frame;
     CatchSquares currentGame(gameMode.getObjectCount());
@@ -55,7 +55,7 @@ void Game::run(GameMode& gameMode) {
         cv::flip(frame, frame, 1);
         std::vector<cv::Rect> faces = getFaceRects(frame);
         for (auto& face : faces) {
-            GraphicalSquare faceSquare(face, 2, {255, 0, 0});
+            GraphicalSquare faceSquare(face, 2, {0, 0, 255});
             currentGame.addFaceSquare(faceSquare);
         }
 

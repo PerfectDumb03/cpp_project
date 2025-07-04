@@ -1,9 +1,9 @@
 #include "../include/Game.h"
-#include "../include/GameMode.h"
+#include "../include/GameHandler.h"
 #include <string>
 
 int main() {
-    GameMode gameMode;
+    GameHandler gameMode;
     std::string cascadeFilePath = "../haarcascade_frontalface_default.xml";
     Game game(cascadeFilePath);
     gameMode.gameStartInput();

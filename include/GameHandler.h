@@ -11,10 +11,10 @@
 
 class Game;
 
-class GameMode : public Player {
+class GameHandler : public Player {
 public:
-    GameMode() = default;
-    ~GameMode() override = default;
+    GameHandler() = default;
+    ~GameHandler() override = default;
 
 
     void setPlayerNameFromInput();

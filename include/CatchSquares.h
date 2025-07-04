@@ -5,12 +5,12 @@
 #ifndef CATCHSQUARES_H
 #define CATCHSQUARES_H
 #include <opencv2/opencv.hpp>
-#include "GameMode.h"
+#include "GameHandler.h"
 #include "../include/GraphicalSquare.h"
 #include "../include/GraphicalCircle.h"
 
 
-class CatchSquares : public GameMode{
+class CatchSquares : public GameHandler{
 private:
     int m_frameCount = 0;
     std::vector<GraphicalSquare> m_faceSquares;
@@ -38,7 +38,7 @@ public:
 
     void renderGraphics(cv::Mat& frame);
     void removeOutOfBounds();
-    void checkFaceCollision(GameMode& gameMode);
+    void checkFaceCollision(GameHandler& gameMode);
     void move();
     void createObjects();
     bool circleChance();

@@ -2,13 +2,13 @@
 // Created by Thomas on 03.07.2025.
 //
 
-#include "../include/GameMode.h"
+#include "../include/GameHandler.h"
 #include <limits>
 
 
 #define MAX_OBJECT_COUNT 100
 
-void GameMode::setPlayerNameFromInput() {
+void GameHandler::setPlayerNameFromInput() {
     std::string name;
     while (true) {
         std::cout << "Please enter your name (whitespace allowed; maximum 14 characters): ";
@@ -21,7 +21,7 @@ void GameMode::setPlayerNameFromInput() {
     }
 }
 
-void GameMode::setGameMode() {
+void GameHandler::setGameMode() {
     while (true) {
         std::cout << "Which gamemode do you want to play? Input an appropriate number.\n";
         std::cout << "1: Dodge balls\n";
@@ -45,11 +45,11 @@ void GameMode::setGameMode() {
     }
 }
 
-int GameMode::getGameMode() const {
+int GameHandler::getGameMode() const {
     return gameMode;
 }
 
-void GameMode::setObjectCount() {
+void GameHandler::setObjectCount() {
     while (true) {
         switch (gameMode) {
             case 1:
@@ -84,18 +84,18 @@ void GameMode::setObjectCount() {
     }
 }
 
-int GameMode::getObjectCount() {
+int GameHandler::getObjectCount() {
     return objectCount;
 }
 
-void GameMode::gameStartInput() {
+void GameHandler::gameStartInput() {
     setPlayerNameFromInput();
     setGameMode();
     setObjectCount();
 }
 
 // Destroy playing window before calling function (e.g., cv::destroyWindow(windowName);)
-void GameMode::gameOver() {
+void GameHandler::gameOver() {
     // Generate black frame
     cv::Mat gameOverFrame = cv::Mat::zeros(600, 800, CV_8UC3);
 

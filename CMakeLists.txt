@@ -13,7 +13,7 @@ include_directories(${OpenCV_INCLUDE_DIRS})
 
 set(Includes
         include/Game.h
-        include/GameMode.h
+        include/GameHandler.h
         include/GraphicalCircle.h
         include/GraphicalSquare.h
         include/Player.h
@@ -25,7 +25,7 @@ set(Includes
 
 set(Sources
         src/Game.cpp
-        src/GameMode.cpp
+        src/GameHandler.cpp
         src/GraphicalCircle.cpp
         src/GraphicalSquare.cpp
         src/main.cpp

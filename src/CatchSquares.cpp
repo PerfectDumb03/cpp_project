@@ -3,7 +3,10 @@
 //
 
 #include "../include/CatchSquares.h"
-#include "../include/GameMode.h"
+
+#include <codecvt>
+
+#include "../include/GameHandler.h"
 
 //temporary for working version
 CatchSquares::CatchSquares(int catschSquaresobjectCount){
@@ -110,18 +113,18 @@ void CatchSquares::removeOutOfBounds() {
     });
 }
 
-void CatchSquares::checkFaceCollision(GameMode& gameMode) {
+void CatchSquares::checkFaceCollision(GameHandler& gameHandler) {
     for (auto& face : m_faceSquares) {
         m_squares.remove_if([&](GraphicalSquare& square) {
             if (square.checkCollision(face)) {
-                gameMode.addScore(1);
+                gameHandler.addScore(1);
                 return true;
             }
             return false;
         });
         m_circles.remove_if([&](GraphicalCircle& circle) {
             if (circle.checkCollision(face)) {
-                gameMode.subtractScore(1);
+                gameHandler.subtractScore(1);
                 return true;
             }
             return false;
