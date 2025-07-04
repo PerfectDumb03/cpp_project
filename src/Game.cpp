@@ -5,6 +5,7 @@
 #include "../include/GameHandler.h"
 #include "../include/GraphicalSquare.h"
 #include "../include/GraphicalCircle.h"
+#include "../include/CatchBalls.h"
 
 Game::Game(const std::string& cascadePath) : frameWidth(0), frameHeight(0) {
     faceCascade.load(cascadePath);
@@ -45,10 +46,10 @@ std::vector<cv::Rect> Game::getFaceRects(cv::Mat& frame) {
 }
 
 
-void Game::run(GameHandler& gameMode) {
+void Game::run(GameHandler& gameHandler) {
     if (!initialize()) return;
     cv::Mat frame;
-    CatchSquares currentGame(gameMode.getObjectCount());
+    CatchBalls currentGame(gameHandler.getObjectCount());
     while (true) {
         cap >> frame;
         if (frame.empty()) break;
@@ -61,9 +62,9 @@ void Game::run(GameHandler& gameMode) {
 
         currentGame.createObjects();
         currentGame.renderGraphics(frame);
-        currentGame.checkFaceCollision(gameMode);
-        currentGame.move();
-        currentGame.removeOutOfBounds();
+        currentGame.checkFaceCollision(); //ToDo func needs diffrent Attributes in diffrent game modes (Gamehandler reference)
+        currentGame.move();                 // --> Gamehandler needs to be acessed inside the GameMode class
+        currentGame.removeOutOfBounds(gameHandler);
         currentGame.resetFaceSquares();
         if (currentGame.getObjectCount() == 0) {
             cv::destroyWindow(windowName);
