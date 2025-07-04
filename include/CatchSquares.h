@@ -4,45 +4,29 @@
 
 #ifndef CATCHSQUARES_H
 #define CATCHSQUARES_H
-#include <opencv2/opencv.hpp>
-#include "GameHandler.h"
-#include "../include/GraphicalSquare.h"
-#include "../include/GraphicalCircle.h"
+
+#include "../include/GameMode.h"
 
 
-class CatchSquares : public GameHandler{
+class GameHandler;
+
+class CatchSquares : public GameMode{
 private:
-    int m_frameCount = 0;
-    std::vector<GraphicalSquare> m_faceSquares;
     std::list<GraphicalSquare> m_squares;
-    std::list<GraphicalCircle> m_circles;
 
 public:
     CatchSquares(int objectCount);
     ~CatchSquares() = default;
 
-    std::vector<GraphicalSquare> getFaceSquares();
     std::list<GraphicalSquare> getSquares();
-    std::list<GraphicalCircle> getCircles();
-    int getFrameCount();
-
-    void setFrameCount(int newValue);
-    void setObjectCount(int newValue) override;
-    void addFaceSquare(GraphicalSquare& newFace);
     void addSquare(GraphicalSquare& newSquare);
-    void addCircle(GraphicalCircle& newCircle);
-    void increaseScore(); //not used anymore - Pending deletion
-    void decreaseScore();//not used anymore - Pending deletion
 
-    void resetFaceSquares();
-
-    void renderGraphics(cv::Mat& frame);
+    void renderGraphics(cv::Mat& frame) override;
+    void move() override;
+    void createObjects() override;
     void removeOutOfBounds();
-    void checkFaceCollision(GameHandler& gameMode);
-    void move();
-    void createObjects();
+    void checkFaceCollision(GameHandler& gameHandler);
     bool circleChance();
-    int randXCoord();
 };
 
 

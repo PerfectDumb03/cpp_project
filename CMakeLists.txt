@@ -21,6 +21,7 @@ set(Includes
         include/ShapeCircle.h
         include/ShapeSquare.h
         include/CatchSquares.h
+        include/GameMode.h
 )
 
 set(Sources
@@ -34,6 +35,7 @@ set(Sources
         src/ShapeCircle.cpp
         src/ShapeSquare.cpp
         src/CatchSquares.cpp
+        src/GameMode.cpp
 )
 
 add_executable(FaceDetectionStarter "${Includes}" "${Sources}")
