@@ -8,7 +8,7 @@ public:
     Game(const std::string& cascadePath);
     virtual ~Game();
     bool initialize();
-    void run();
+    void run(GameMode& gameMode);
     std::vector<cv::Rect> getFaceRects(cv::Mat& frame);
 private:
     cv::VideoCapture cap;

@@ -7,7 +7,7 @@ int main() {
     std::string cascadeFilePath = "../haarcascade_frontalface_default.xml";
     Game game(cascadeFilePath);
     gameMode.gameStartInput();
-    game.run();
+    game.run(gameMode);
     gameMode.gameOver();
     return 0;
 }

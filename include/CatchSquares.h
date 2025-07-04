@@ -31,14 +31,14 @@ public:
     void addFaceSquare(GraphicalSquare& newFace);
     void addSquare(GraphicalSquare& newSquare);
     void addCircle(GraphicalCircle& newCircle);
-    void increaseScore();
-    void decreaseScore();
+    void increaseScore(); //not used anymore - Pending deletion
+    void decreaseScore();//not used anymore - Pending deletion
 
     void resetFaceSquares();
 
     void renderGraphics(cv::Mat& frame);
     void removeOutOfBounds();
-    void checkFaceCollision();
+    void checkFaceCollision(GameMode& gameMode);
     void move();
     void createObjects();
     bool circleChance();

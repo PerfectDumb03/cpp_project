@@ -110,18 +110,18 @@ void CatchSquares::removeOutOfBounds() {
     });
 }
 
-void CatchSquares::checkFaceCollision() {
+void CatchSquares::checkFaceCollision(GameMode& gameMode) {
     for (auto& face : m_faceSquares) {
         m_squares.remove_if([&](GraphicalSquare& square) {
             if (square.checkCollision(face)) {
-                increaseScore();
+                gameMode.addScore(1);
                 return true;
             }
             return false;
         });
         m_circles.remove_if([&](GraphicalCircle& circle) {
             if (circle.checkCollision(face)) {
-                decreaseScore();
+                gameMode.subtractScore(1);
                 return true;
             }
             return false;
@@ -129,11 +129,13 @@ void CatchSquares::checkFaceCollision() {
     }
 }
 
+//not used anymore - Pending deletion
 void CatchSquares::increaseScore() {
     addScore(1);
     std::cout << "Score increased!" << getScore() << std::endl;
 }
 
+//not used anymore - Pending deletion
 void CatchSquares::decreaseScore() {
     subtractScore(1);
     std::cout << "Score decreased!" << getScore() << std::endl;

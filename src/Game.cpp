@@ -45,10 +45,10 @@ std::vector<cv::Rect> Game::getFaceRects(cv::Mat& frame) {
 }
 
 
-void Game::run() {
+void Game::run(GameMode& gameMode) {
     if (!initialize()) return;
     cv::Mat frame;
-    CatchSquares currentGame(10);
+    CatchSquares currentGame(gameMode.getObjectCount());
     while (true) {
         cap >> frame;
         if (frame.empty()) break;
@@ -61,7 +61,7 @@ void Game::run() {
 
         currentGame.createObjects();
         currentGame.renderGraphics(frame);
-        currentGame.checkFaceCollision();
+        currentGame.checkFaceCollision(gameMode);
         currentGame.move();
         currentGame.removeOutOfBounds();
         currentGame.resetFaceSquares();
