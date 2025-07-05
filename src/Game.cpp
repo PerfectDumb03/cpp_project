@@ -49,7 +49,7 @@ std::vector<cv::Rect> Game::getFaceRects(cv::Mat& frame) {
 void Game::run(GameHandler& gameHandler) {
     if (!initialize()) return;
     cv::Mat frame;
-    CatchSquares currentGame(gameHandler);
+    CatchBalls currentGame(gameHandler);
     while (true) {
         cap >> frame;
         if (frame.empty()) break;
