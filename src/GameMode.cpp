@@ -55,3 +55,27 @@ void GameMode::createObjects() {
         }
     }
 }
+void GameMode::checkFaceCollision() {
+    for (auto& face : m_faceSquares) {
+        m_circles.remove_if([&](GraphicalCircle& circle) {
+            if (circle.checkCollision(face)) {
+                //ToDo end game
+                return true;
+            }
+            return false;
+        });
+    }
+}
+
+void GameMode::removeOutOfBounds() {
+    int frameheight = 480; //ToDo add dynamic frame height
+    for (auto& face : m_faceSquares) {
+        m_circles.remove_if([&](GraphicalCircle& circle) {
+            if (circle.checkOutOfBounds(frameheight)) {
+                m_gameHandler.addScore(1);
+                return true;
+            }
+            return false;
+        });
+    }
+}

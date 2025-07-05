@@ -23,12 +23,12 @@ public:
     GameMode(GameHandler& gameHandler);
     virtual ~GameMode() = default;
 
-    virtual std::vector<GraphicalSquare> getFaceSquares();
-    virtual std::list<GraphicalCircle> getCircles();
+    std::vector<GraphicalSquare> getFaceSquares();
+    std::list<GraphicalCircle> getCircles();
     int getObjectCount();
 
-    virtual void addFaceSquare(GraphicalSquare& newFace);
-    virtual void addCircle(GraphicalCircle& newCircle);
+    void addFaceSquare(GraphicalSquare& newFace);
+    void addCircle(GraphicalCircle& newCircle);
 
     virtual void resetFaceSquares();
 
@@ -36,7 +36,8 @@ public:
     virtual void renderGraphics(cv::Mat& frame);
     virtual void move();
     virtual void createObjects();
+    virtual void checkFaceCollision();
+    virtual void removeOutOfBounds();
 };
-
 
 #endif //GAMEMODE_H

@@ -10,8 +10,5 @@ class CatchBalls: public GameMode {
 public:
     CatchBalls(GameHandler& gameHandler);
     ~CatchBalls() = default;
-
-    void checkFaceCollision();
-    void removeOutOfBounds(GameHandler& gameHandler);
 };
 #endif //CATCHBALLS_H

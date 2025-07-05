@@ -23,8 +23,8 @@ public:
     void renderGraphics(cv::Mat& frame) override;
     void move() override;
     void createObjects() override;
-    void removeOutOfBounds();
-    void checkFaceCollision();
+    void removeOutOfBounds() override;
+    void checkFaceCollision() override;
     bool circleChance();
 };
 
