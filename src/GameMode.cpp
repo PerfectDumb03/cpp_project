@@ -60,7 +60,7 @@ void GameMode::checkFaceCollision() {
         m_circles.remove_if([&](GraphicalCircle& circle) {
             if (circle.checkCollision(face)) {
                 m_objectCount = 0; //ToDO find better solution to end game
-                std::cout << "Collision detected! Game Over." << std::endl;
+
                 return true;
             }
             return false;
