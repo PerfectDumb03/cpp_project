@@ -13,13 +13,14 @@ class GameHandler;
 
 class GameMode{
 protected:
+    GameHandler& m_gameHandler;
     int m_frameCount = 0;
     int m_objectCount;
     std::vector<GraphicalSquare> m_faceSquares;
     std::list<GraphicalCircle> m_circles;
 
 public:
-    GameMode(int objectCount);
+    GameMode(GameHandler& gameHandler);
     virtual ~GameMode() = default;
 
     virtual std::vector<GraphicalSquare> getFaceSquares();

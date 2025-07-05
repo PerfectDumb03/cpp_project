@@ -8,7 +8,7 @@
 
 class CatchBalls: public GameMode {
 public:
-    CatchBalls(int objectCount);
+    CatchBalls(GameHandler& gameHandler);
     ~CatchBalls() = default;
 
     void checkFaceCollision();

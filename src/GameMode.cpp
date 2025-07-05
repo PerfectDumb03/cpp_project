@@ -4,7 +4,9 @@
 
 #include "../include/GameMode.h"
 
-GameMode::GameMode(int objectCount) : m_objectCount(objectCount) {}
+#include "../include/GameHandler.h"
+
+GameMode::GameMode(GameHandler& gameHandler) : m_gameHandler(gameHandler), m_objectCount(gameHandler.getObjectCount()) {}
 
 std::vector<GraphicalSquare> GameMode::getFaceSquares() {
     return m_faceSquares;

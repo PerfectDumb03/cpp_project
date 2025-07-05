@@ -4,7 +4,7 @@
 #include "../include/CatchBalls.h"
 #include "../include/GameHandler.h""
 
-CatchBalls::CatchBalls(int objectCount):GameMode(objectCount) {}
+CatchBalls::CatchBalls(GameHandler& gameHandler):GameMode(gameHandler) {}
 
 
 void CatchBalls::checkFaceCollision() {

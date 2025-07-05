@@ -1,34 +1,39 @@
 //
 // Created by Thomas on 03.07.2025.
 //
+#include <iostream>
+#include <bits/ostream.tcc>
+
 #include "../include/Player.h"
 
 //Name
 void Player::setName(std::string name) {
-    playerName = name;
+    m_playerName = name;
 }
 
 std::string Player::getName() const {
-    return playerName;
+    return m_playerName;
 }
 
 //Score
 void Player::setScore(int score) {
-    playerScore = score;
+    m_playerScore = score;
 }
 
 int Player::getScore() const {
-    return playerScore;
+    return m_playerScore;
 }
 
 void Player::resetScore() {
-    playerScore = 0;
+    m_playerScore = 0;
 }
 
 void Player::addScore(int points) {
-    playerScore += points;
+    m_playerScore += points;
 }
 
 void Player::subtractScore(int points) {
-    playerScore -= points;
+    if (m_playerScore > 0 ) {
+        m_playerScore -= points;
+    }
 }

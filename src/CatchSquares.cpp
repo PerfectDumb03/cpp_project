@@ -6,7 +6,7 @@
 #include "../include/GameHandler.h"
 
 //temporary for working version
-CatchSquares::CatchSquares(int catchSquaresobjectCount): GameMode(catchSquaresobjectCount){
+CatchSquares::CatchSquares(GameHandler& gameHandler): GameMode(gameHandler){
 }
 
 
@@ -76,18 +76,18 @@ void CatchSquares::removeOutOfBounds() {
     });
 }
 
-void CatchSquares::checkFaceCollision(GameHandler& gameHandler) {
+void CatchSquares::checkFaceCollision() {
     for (auto& face : m_faceSquares) {
         m_squares.remove_if([&](GraphicalSquare& square) {
             if (square.checkCollision(face)) {
-                gameHandler.addScore(1);
+                m_gameHandler.addScore(1);
                 return true;
             }
             return false;
         });
         m_circles.remove_if([&](GraphicalCircle& circle) {
             if (circle.checkCollision(face)) {
-                gameHandler.subtractScore(1);
+                m_gameHandler.subtractScore(1);
                 return true;
             }
             return false;

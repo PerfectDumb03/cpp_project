@@ -7,7 +7,6 @@
 
 #include "../include/GameMode.h"
 
-
 class GameHandler;
 
 class CatchSquares : public GameMode{
@@ -15,7 +14,7 @@ private:
     std::list<GraphicalSquare> m_squares;
 
 public:
-    CatchSquares(int objectCount);
+    CatchSquares(GameHandler& gameHandler);
     ~CatchSquares() = default;
 
     std::list<GraphicalSquare> getSquares();
@@ -25,7 +24,7 @@ public:
     void move() override;
     void createObjects() override;
     void removeOutOfBounds();
-    void checkFaceCollision(GameHandler& gameHandler);
+    void checkFaceCollision();
     bool circleChance();
 };
 

@@ -49,7 +49,7 @@ std::vector<cv::Rect> Game::getFaceRects(cv::Mat& frame) {
 void Game::run(GameHandler& gameHandler) {
     if (!initialize()) return;
     cv::Mat frame;
-    CatchBalls currentGame(gameHandler.getObjectCount());
+    CatchSquares currentGame(gameHandler);
     while (true) {
         cap >> frame;
         if (frame.empty()) break;
@@ -62,9 +62,9 @@ void Game::run(GameHandler& gameHandler) {
 
         currentGame.createObjects();
         currentGame.renderGraphics(frame);
-        currentGame.checkFaceCollision(); //ToDo func needs diffrent Attributes in diffrent game modes (Gamehandler reference)
-        currentGame.move();                 // --> Gamehandler needs to be acessed inside the GameMode class
-        currentGame.removeOutOfBounds(gameHandler);
+        currentGame.checkFaceCollision();
+        currentGame.move();
+        currentGame.removeOutOfBounds();
         currentGame.resetFaceSquares();
         if (currentGame.getObjectCount() == 0) {
             cv::destroyWindow(windowName);

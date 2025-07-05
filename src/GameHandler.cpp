@@ -101,7 +101,7 @@ void GameHandler::gameOver() {
 
     // Define text
     std::string gameOverText = "GAME OVER";
-    std::string scoreText = playerName + "'s Score: " + std::to_string(playerScore);
+    std::string scoreText = m_playerName + "'s Score: " + std::to_string(m_playerScore);
     std::string closeText = "Press any key to exit...";
     int font = cv::FONT_HERSHEY_SIMPLEX;
 

@@ -22,8 +22,8 @@ public:
     void subtractScore(int points);
 
 protected:
-    std::string playerName = "DefaultPlayer";
-    int playerScore = 0;
+    std::string m_playerName = "DefaultPlayer";
+    int m_playerScore = 0;
 };
 
 #endif // PLAYER_H
