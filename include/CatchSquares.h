@@ -7,14 +7,14 @@
 
 #include "../include/GameMode.h"
 
-class GameHandler;
+class GameHandlerOld;
 
 class CatchSquares : public GameMode{
 private:
     std::list<GraphicalSquare> m_squares;
 
 public:
-    CatchSquares(GameHandler& gameHandler);
+    CatchSquares(GameHandlerOld& gameHandler);
     ~CatchSquares() = default;
 
     std::list<GraphicalSquare> getSquares();

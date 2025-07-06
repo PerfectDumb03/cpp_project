@@ -2,13 +2,13 @@
 // Created by Thomas on 03.07.2025.
 //
 
-#include "../include/GameHandler.h"
+#include "../include/GameHandlerOld.h"
 #include <limits>
 
 
 #define MAX_OBJECT_COUNT 100
 
-void GameHandler::setGameMode() {
+void GameHandlerOld::setGameMode() {
     while (true) {
         std::cout << "Which gamemode do you want to play? Input an appropriate number.\n";
         std::cout << "1: Dodge balls\n";
@@ -32,11 +32,11 @@ void GameHandler::setGameMode() {
     }
 }
 
-int GameHandler::getGameMode() const {
+int GameHandlerOld::getGameMode() const {
     return gameMode;
 }
 
-void GameHandler::setObjectCount() {
+void GameHandlerOld::setObjectCount() {
     while (true) {
         switch (gameMode) {
             case 1:
@@ -71,11 +71,11 @@ void GameHandler::setObjectCount() {
     }
 }
 
-int GameHandler::getObjectCount() {
+int GameHandlerOld::getObjectCount() {
     return objectCount;
 }
 
-void GameHandler::gameStartInput() {
+void GameHandlerOld::gameStartInput() {
     setName();
     setGameMode();
     setObjectCount();

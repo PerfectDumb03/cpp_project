@@ -4,9 +4,9 @@
 
 #include "../include/GameMode.h"
 
-#include "../include/GameHandler.h"
+#include "../include/GameHandlerOld.h"
 
-GameMode::GameMode(GameHandler& gameHandler) : m_gameHandler(gameHandler), m_objectCount(gameHandler.getObjectCount()) {}
+GameMode::GameMode(GameHandlerOld& gameHandler) : m_gameHandler(gameHandler), m_objectCount(gameHandler.getObjectCount()) {}
 
 std::vector<GraphicalSquare> GameMode::getFaceSquares() {
     return m_faceSquares;
@@ -64,7 +64,7 @@ void GameMode::checkFaceCollision() {
         m_circles.remove_if([&](GraphicalCircle& circle) {
             if (circle.checkCollision(face)) {
                 m_objectCount = 0; //ToDO find better solution to end game
-
+                m_objectsCreated = 0;
                 return true;
             }
             return false;

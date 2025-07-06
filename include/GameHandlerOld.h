@@ -11,10 +11,10 @@
 
 class Game;
 
-class GameHandler : public Player {
+class GameHandlerOld : public Player {
 public:
-    GameHandler() = default;
-    ~GameHandler() override = default;
+    GameHandlerOld() = default;
+    ~GameHandlerOld() override = default;
 
     void setGameMode();
     int getGameMode() const;

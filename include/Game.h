@@ -1,14 +1,14 @@
 #ifndef GAME_H
 #define GAME_H
 
-#include "GameHandler.h"
+#include "GameHandlerOld.h"
 
 class Game {
 public:
     Game(const std::string& cascadePath);
     virtual ~Game();
     bool initialize();
-    void run(GameHandler& gameMode);
+    void run(GameHandlerOld& gameMode);
     std::vector<cv::Rect> getFaceRects(cv::Mat& frame);
 private:
     cv::VideoCapture cap;

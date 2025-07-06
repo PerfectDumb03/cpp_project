@@ -1,11 +1,11 @@
 #include "../include/Game.h"
-#include "../include/GameHandler.h"
+#include "../include/GameHandlerOld.h"
 #include <string>
 
 #include "../include/GameOverScreen.h"
 
 int main() {
-    GameHandler gameHandler;
+    GameHandlerOld gameHandler;
     std::string cascadeFilePath = "../haarcascade_frontalface_default.xml";
     Game game(cascadeFilePath);
     gameHandler.gameStartInput();

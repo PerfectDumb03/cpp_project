@@ -8,7 +8,7 @@
 
 class CatchBalls: public GameMode {
 public:
-    CatchBalls(GameHandler& gameHandler);
+    CatchBalls(GameHandlerOld& gameHandler);
     ~CatchBalls() = default;
 };
 #endif //CATCHBALLS_H

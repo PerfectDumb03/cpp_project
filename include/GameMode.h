@@ -9,11 +9,11 @@
 #include <opencv2/opencv.hpp>
 
 
-class GameHandler;
+class GameHandlerOld;
 
 class GameMode{
 protected:
-    GameHandler& m_gameHandler;
+    GameHandlerOld& m_gameHandler;
     int m_frameCount = 0;
     int m_objectCount;
     int m_objectsCreated = 0;
@@ -21,7 +21,7 @@ protected:
     std::list<GraphicalCircle> m_circles;
 
 public:
-    GameMode(GameHandler& gameHandler);
+    GameMode(GameHandlerOld& gameHandler);
     virtual ~GameMode() = default;
 
     std::vector<GraphicalSquare> getFaceSquares();

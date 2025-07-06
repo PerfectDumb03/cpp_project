@@ -3,10 +3,10 @@
 //
 
 #include "../include/CatchSquares.h"
-#include "../include/GameHandler.h"
+#include "../include/GameHandlerOld.h"
 
 //temporary for working version
-CatchSquares::CatchSquares(GameHandler& gameHandler): GameMode(gameHandler){
+CatchSquares::CatchSquares(GameHandlerOld& gameHandler): GameMode(gameHandler){
 }
 
 

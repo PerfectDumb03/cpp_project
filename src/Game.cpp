@@ -2,7 +2,7 @@
 #include <iostream>
 
 #include "../include/CatchSquares.h"
-#include "../include/GameHandler.h"
+#include "../include/GameHandlerOld.h"
 #include "../include/GraphicalSquare.h"
 #include "../include/GraphicalCircle.h"
 #include "../include/CatchBalls.h"
@@ -46,10 +46,10 @@ std::vector<cv::Rect> Game::getFaceRects(cv::Mat& frame) {
 }
 
 
-void Game::run(GameHandler& gameHandler) {
+void Game::run(GameHandlerOld& gameHandler) {
     if (!initialize()) return;
     cv::Mat frame;
-    CatchSquares currentGame(gameHandler);
+    CatchBalls currentGame(gameHandler);
     while (true) {
         cap >> frame;
         if (frame.empty()) break;
