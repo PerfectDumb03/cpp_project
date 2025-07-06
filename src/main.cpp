@@ -15,7 +15,7 @@ int main() {
     gameHandler.gameStartInput();
     game.run(gameHandler);
     Leaderboard leaderboard("../leaderboard.txt");
-    leaderboard.addPlayer(gameHandler.getPlayerName(), gameHandler.getScore());
-    leaderboard.printLeaderboard();
+    leaderboard.addPlayer(gameHandler.getGameMode() , gameHandler.getPlayerName(), gameHandler.getScore());
+    leaderboard.printLeaderboardByGamemode(gameHandler.getGameMode());
     return 0;
 }

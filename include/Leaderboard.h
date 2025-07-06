@@ -10,10 +10,13 @@
 #include <fstream>
 #include <sstream>
 
+#include "GameMode.h"
+
 #endif //LEADERBOARD_H
 class Leaderboard {
 private:
     struct PlayerData {
+        int gameMode;
         std::string name;
         int score;
         int order;
@@ -24,8 +27,9 @@ public:
         loadFromFile();
     }
     ~Leaderboard() = default;
-    void addPlayer(const std::string& name, const int score);
+    void addPlayer(int gameMode, const std::string& name, const int score);
     void printLeaderboard();
+    void printLeaderboardByGamemode(int mode);
     const std::vector<PlayerData>& getPlayerData();
 
 private:
