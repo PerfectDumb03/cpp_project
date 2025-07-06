@@ -44,25 +44,28 @@ std::vector<cv::Rect> Game::getFaceRects(cv::Mat& frame) {
     return faces;
 }
 
+void Game::executeGameLoop(GameMode* currentGame, cv::Mat& frame) {
+    std::vector<cv::Rect> faces = getFaceRects(frame);
+    currentGame->addFaceSquare(faces);
+    currentGame->createObjects();
+    currentGame->renderGraphics(frame);
+    currentGame->checkFaceCollision();
+    currentGame->move();
+    currentGame->removeOutOfBounds();
+    currentGame->resetFaceSquares();
+}
 
 void Game::run(GameHandler& gameHandler) {
     if (!initialize()) return;
     cv::Mat frame;
     auto currentGame = GameModeFactory::create(gameHandler.getGameMode(), gameHandler);
+
     while (true) {
         cap >> frame;
         if (frame.empty()) break;
         cv::flip(frame, frame, 1);
 
-        std::vector<cv::Rect> faces = getFaceRects(frame);
-
-        currentGame->addFaceSquare(faces);
-        currentGame->createObjects();
-        currentGame->renderGraphics(frame);
-        currentGame->checkFaceCollision();
-        currentGame->move();
-        currentGame->removeOutOfBounds();
-        currentGame->resetFaceSquares();
+        executeGameLoop(currentGame.get(), frame);
 
         cv::imshow(windowName, frame);
         int key = cv::waitKey(10);
