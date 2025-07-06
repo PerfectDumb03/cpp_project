@@ -4,6 +4,8 @@
 
 #include <string>
 
+#include "../include/Leaderboard.h"
+
 int main() {
     Player player;
     GameSettings gameSettings;
@@ -12,5 +14,8 @@ int main() {
     Game game(cascadeFilePath);
     gameHandler.gameStartInput();
     game.run(gameHandler);
+    Leaderboard leaderboard("../leaderboard.txt");
+    leaderboard.addPlayer(gameHandler.getPlayerName(), gameHandler.getScore());
+    leaderboard.printLeaderboard();
     return 0;
 }

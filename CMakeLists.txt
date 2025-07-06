@@ -27,6 +27,7 @@ set(Includes
         include/GameModeFactory.h
         include/GameHandler.h
         include/GameSettings.h
+        include/Leaderboard.h
 )
 
 set(Sources
@@ -46,6 +47,7 @@ set(Sources
         src/GameModeFactory.cpp
         src/GameHandler.cpp
         src/GameSettings.cpp
+        src/Leaderboard.cpp
 )
 
 add_executable(FaceDetectionStarter "${Includes}" "${Sources}")
