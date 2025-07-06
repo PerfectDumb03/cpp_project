@@ -30,7 +30,11 @@ void Player::resetScore() {
 }
 
 void Player::addScore(int points) {
-    m_playerScore += points;
+    if (m_playerScore  + points < 0) {
+        m_playerScore = 0;
+    } else {
+        m_playerScore += points;
+    }
 }
 
 void Player::subtractScore(int points) {
