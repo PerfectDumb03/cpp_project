@@ -25,6 +25,12 @@ public:
     void addScore(int points); // positiv and negativ
     int getScore() const;
 
+    int getFrameHeight() const;
+    void setFrameHeight(int height);
+
+    int getFrameWidth() const;
+    void setFrameWidth(int width);
+
     std::string getPlayerName() const;
 
 

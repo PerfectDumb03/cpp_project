@@ -34,3 +34,19 @@ void GameSettings::setObjectCount() {
 int GameSettings::getObjectCount() const {
     return m_objectCount;
 }
+
+int GameSettings::getframeHeight() const {
+    return m_frameHeight;
+}
+
+void GameSettings::setFrameHeight(int height) {
+    m_frameHeight = height;
+}
+
+int GameSettings::getFrameWidth() const {
+    return m_frameWidth;
+}
+
+void GameSettings::setFrameWidth(int width) {
+    m_frameWidth = width;
+}

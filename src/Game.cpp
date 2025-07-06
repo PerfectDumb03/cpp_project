@@ -1,8 +1,6 @@
 #include "../include/Game.h"
 #include <iostream>
 
-#include "../include/GraphicalSquare.h"
-#include "../include/GraphicalCircle.h"
 #include "../include/GameModeFactory.h"
 #include "../include/GameOverScreen.h"
 
@@ -17,7 +15,7 @@ Game::~Game() {
     cv::destroyAllWindows();
 }
 
-bool Game::initialize() {
+bool Game::initialize(GameHandler& gameHandler) {
     cap.open(0);
     if (!cap.isOpened()) {
         std::cerr << "Error: Could not open camera." << std::endl;
@@ -25,11 +23,12 @@ bool Game::initialize() {
     }
     frameWidth = static_cast<int>(cap.get(cv::CAP_PROP_FRAME_WIDTH));
     frameHeight = static_cast<int>(cap.get(cv::CAP_PROP_FRAME_HEIGHT));
-    if (frameWidth == 0 || frameHeight == 0) {
-        frameWidth = 640;
-        frameHeight = 480;
+    if (frameWidth != 0 || frameHeight != 0) {
+        gameHandler.setFrameWidth(frameWidth);
         cap.set(cv::CAP_PROP_FRAME_WIDTH, frameWidth);
+        gameHandler.setFrameHeight(frameHeight);
         cap.set(cv::CAP_PROP_FRAME_HEIGHT, frameHeight);
+        std::cout << "Frame size: " << frameWidth << "x" << frameHeight << std::endl;
     }
     if (faceCascade.empty()) {
         std::cerr << "Error: Could not load Haar cascade file." << std::endl;
@@ -56,7 +55,7 @@ void Game::executeGameLoop(GameMode* currentGame, cv::Mat& frame) {
 }
 
 void Game::run(GameHandler& gameHandler) {
-    if (!initialize()) return;
+    if (!initialize(gameHandler)) return;
     cv::Mat frame;
     auto currentGame = GameModeFactory::create(gameHandler.getGameMode(), gameHandler);
 

@@ -31,6 +31,21 @@ void GameHandler::addScore(int points) {
 int GameHandler::getScore() const {
     return m_player.getScore();
 }
+int GameHandler::getFrameHeight() const {
+    return m_gameSettings.getframeHeight();
+}
+
+void GameHandler::setFrameHeight(int height) {
+    m_gameSettings.setFrameHeight(height);
+}
+
+int GameHandler::getFrameWidth() const {
+    return m_gameSettings.getFrameWidth();
+}
+
+void GameHandler::setFrameWidth(int width) {
+    m_gameSettings.setFrameWidth(width);
+}
 
 std::string GameHandler::getPlayerName() const {
     return m_player.getName();

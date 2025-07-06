@@ -10,7 +10,7 @@ class Game {
 public:
     Game(const std::string& cascadePath);
     virtual ~Game();
-    bool initialize();
+    bool initialize(GameHandler& gameHandler);
     void run(GameHandler& gameMode);
     std::vector<cv::Rect> getFaceRects(cv::Mat& frame);
 private:
