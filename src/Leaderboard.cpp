@@ -6,42 +6,42 @@
 
 void Leaderboard::loadFromFile() {
     m_playerData.clear();
-    std::ifstream inFile("leaderboard.txt");
+    std::ifstream inFile(m_filename);
+    if (!inFile) {
+        std::cerr << "Could not open file: " << m_filename << std::endl;
+        return;
+    }
+
     std::string line;
     while (std::getline(inFile, line)) {
         std::istringstream lineStream(line);
         std::string name;
-        int score;
-        int order;
-        lineStream >> name >> score >> order;
-        m_playerData.push_back({name, score, order});
+        int score, order;
+        std::string scoreStr, orderStr;
+
+        // Parse format: name,score,order
+        if (std::getline(lineStream, name, ',') &&
+            std::getline(lineStream, scoreStr, ',') &&
+            std::getline(lineStream, orderStr)) {
+            try {
+                score = std::stoi(scoreStr);
+                order = std::stoi(orderStr);
+                m_playerData.push_back({name, score, order});
+            } catch (const std::exception& e) {
+                std::cerr << "Error parsing line: " << line << "\n";
+            }
+        }
     }
 }
 
 int Leaderboard::getOrder(int score) {
-    std::ifstream inFile(m_filename);
-    std::string line;
+    loadFromFile();
     int count = 0;
-
-    if (!inFile) {
-        std::cerr << "Could not open file: " << m_filename << std::endl;
-        return 1; // First by default if file not found
-    }
-
-    while (std::getline(inFile, line)) {
-        std::istringstream ss(line);
-        std::string name;
-        int existingScore, order;
-        char comma;
-
-        if (std::getline(ss, name, ',') && ss >> existingScore >> comma >> order) {
-            if (existingScore == score) {
-                ++count;
-            }
+    for (const auto& player : m_playerData) {
+        if (player.score == score) {
+            ++count;
         }
     }
-
-    inFile.close();
     return count + 1;
 }
 
@@ -62,27 +62,13 @@ void Leaderboard::addPlayer(const std::string& name, const int score) {
 }
 
 void Leaderboard::printLeaderboard() {
-    std::ifstream inFile(m_filename);
-    std::string line;
-
-    if (!inFile) {
-        std::cerr << "Could not open file: " << m_filename << std::endl;
-        return;
+    loadFromFile();
+    std::cout << "Leaderboard:\n";
+    for (const auto& player : m_playerData) {
+        std::cout << "Name: " << player.name
+                  << ", Score: " << player.score
+                  << ", Order: " << player.order << "\n";
     }
-
-    std::cout << "Score,Order,Name" << std::endl;
-    while (std::getline(inFile, line)) {
-        std::istringstream ss(line);
-        std::string name;
-        int score, order;
-        char comma;
-
-        if (std::getline(ss, name, ',') && ss >> score >> comma >> order) {
-            std::cout << score << "," << order << "," << name << std::endl;
-        }
-    }
-
-    inFile.close();
 }
 
 const std::vector<Leaderboard::PlayerData>& Leaderboard::getPlayerData() {
