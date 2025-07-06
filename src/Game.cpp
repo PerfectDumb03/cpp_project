@@ -54,6 +54,14 @@ void Game::executeGameLoop(GameMode* currentGame, cv::Mat& frame) {
     currentGame->resetFaceSquares();
 }
 
+void Game::showScoreIngame(GameHandler& gameHandler, cv::Mat& frame) {
+    std::string scoreText = "Score: " + std::to_string(gameHandler.getScore());
+    int font = cv::FONT_HERSHEY_SIMPLEX;
+    cv::Size textSize = cv::getTextSize(scoreText, font, 1.5, 2, 0);
+    cv::Point scoreTextPos((frame.cols - textSize.width) / 2, 100);
+    cv::putText(frame, scoreText, cv::Point(5,30), font, 1.0, cv::Scalar(255, 0, 255), 2);
+}
+
 void Game::run(GameHandler& gameHandler) {
     if (!initialize(gameHandler)) return;
     cv::Mat frame;
@@ -65,6 +73,7 @@ void Game::run(GameHandler& gameHandler) {
         cv::flip(frame, frame, 1);
 
         executeGameLoop(currentGame.get(), frame);
+        showScoreIngame(gameHandler, frame);
 
         cv::imshow(windowName, frame);
         int key = cv::waitKey(10);

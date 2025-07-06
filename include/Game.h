@@ -15,6 +15,7 @@ public:
     std::vector<cv::Rect> getFaceRects(cv::Mat& frame);
 private:
     void executeGameLoop(GameMode* currentGame, cv::Mat& frame);
+    void showScoreIngame(GameHandler& gameHandler, cv::Mat& frame);
     cv::VideoCapture cap;
     cv::CascadeClassifier faceCascade;
     const std::string windowName = "Face Detection";
