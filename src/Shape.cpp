@@ -61,7 +61,7 @@ void Shape::randomizeColor(std::mt19937 gen) {
 }
 
 void Shape::randomizeSpeed(std::mt19937 gen) {
-    std::uniform_int_distribution<> dis(1, 15);
+    std::uniform_int_distribution<> dis(3, 15);
     setSpeed(dis(gen));
 }
 void Shape::randomizeSize(std::mt19937 gen) {

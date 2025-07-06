@@ -26,7 +26,7 @@ bool ShapeSquare::checkCollision(ShapeSquare& FaceRect){
 }
 
 void ShapeSquare::randomizeSize(std::mt19937 gen) {
-    std::uniform_int_distribution<> dis(5, 100);
+    std::uniform_int_distribution<> dis(5, 75);
     int r = dis(gen);
     setHeight(r);
     setWidth(r);

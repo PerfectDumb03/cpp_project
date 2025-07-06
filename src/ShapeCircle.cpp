@@ -48,7 +48,7 @@ void ShapeCircle::setRadius(int newValue) {
 
 
 void ShapeCircle::randomizeSize(std::mt19937 gen) {
-    std::uniform_int_distribution<> dis(5, 75);
+    std::uniform_int_distribution<> dis(5, 50);
     setRadius(dis(gen));
 }
 
