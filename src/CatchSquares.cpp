@@ -3,10 +3,10 @@
 //
 
 #include "../include/CatchSquares.h"
-#include "../include/GameHandlerOld.h"
+#include "../include/GameHandler.h"
 
 //temporary for working version
-CatchSquares::CatchSquares(GameHandlerOld& gameHandler): GameMode(gameHandler){
+CatchSquares::CatchSquares(GameHandler& gameHandler): GameMode(gameHandler) {
 }
 
 
@@ -87,7 +87,7 @@ void CatchSquares::checkFaceCollision() {
         });
         m_circles.remove_if([&](GraphicalCircle& circle) {
             if (circle.checkCollision(face)) {
-                m_gameHandler.subtractScore(1);
+                m_gameHandler.addScore(-1);
                 return true;
             }
             return false;

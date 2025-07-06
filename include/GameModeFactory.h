@@ -7,12 +7,11 @@
 
 #include "../include/GameModeFactory.h"
 #include "../include/GameMode.h"
-#include "../include/GameHandlerOld.h"
 #include <memory>
 
 class GameModeFactory {
 public:
-    static std::unique_ptr<GameMode> create(int gameMode, GameHandlerOld& gameHandler);
+    static std::unique_ptr<GameMode> create(int gameMode, GameHandler& gameHandler);
 };
 
 

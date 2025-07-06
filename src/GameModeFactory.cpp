@@ -6,7 +6,7 @@
 #include "../include/CatchSquares.h"
 #include "../include/CatchBalls.h"
 
-std::unique_ptr<GameMode> GameModeFactory::create(int gameMode, GameHandlerOld& gameHandler) {
+std::unique_ptr<GameMode> GameModeFactory::create(int gameMode, GameHandler& gameHandler) {
     switch (gameMode) {
         case 1:
             return std::make_unique<CatchBalls>(gameHandler);

@@ -3,6 +3,6 @@
 //
 #include "../include/CatchBalls.h"
 
-CatchBalls::CatchBalls(GameHandlerOld& gameHandler):GameMode(gameHandler) {}
+CatchBalls::CatchBalls(GameHandler& gameHandler):GameMode(gameHandler) {}
 
 

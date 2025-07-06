@@ -1,8 +1,6 @@
 #include "../include/Game.h"
 #include <iostream>
 
-
-#include "../include/GameHandlerOld.h"
 #include "../include/GraphicalSquare.h"
 #include "../include/GraphicalCircle.h"
 #include "../include/GameModeFactory.h"
@@ -46,7 +44,7 @@ std::vector<cv::Rect> Game::getFaceRects(cv::Mat& frame) {
 }
 
 
-void Game::run(GameHandlerOld& gameHandler) {
+void Game::run(GameHandler& gameHandler) {
     if (!initialize()) return;
     cv::Mat frame;
     auto currentGame = GameModeFactory::create(gameHandler.getGameMode(), gameHandler);
