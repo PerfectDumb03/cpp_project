@@ -12,6 +12,5 @@ int main() {
     Game game(cascadeFilePath);
     gameHandler.gameStartInput();
     game.run(gameHandler);
-    GameOverScreen::show(gameHandler.getPlayerName(), gameHandler.getScore());
     return 0;
 }

@@ -4,6 +4,7 @@
 #include "../include/GraphicalSquare.h"
 #include "../include/GraphicalCircle.h"
 #include "../include/GameModeFactory.h"
+#include "../include/GameOverScreen.h"
 
 Game::Game(const std::string& cascadePath) : frameWidth(0), frameHeight(0) {
     faceCascade.load(cascadePath);
@@ -62,17 +63,14 @@ void Game::run(GameHandler& gameHandler) {
         currentGame->move();
         currentGame->removeOutOfBounds();
         currentGame->resetFaceSquares();
-        if (currentGame->getObjectCount() == 0 && currentGame->getObjectsCreated() == 0) {
-            cv::destroyWindow(windowName);
-            break;
-        }
 
         cv::imshow(windowName, frame);
         int key = cv::waitKey(10);
-        if (key == 27) break; // ESC to exit
-        // Break if the window is closed using the red X
-        if (cv::getWindowProperty(windowName, cv::WND_PROP_VISIBLE) < 1) {
-            cv::destroyWindow(windowName);
+        // Break if the window is closed using the red X or ESC to exit
+        if (cv::getWindowProperty(windowName, cv::WND_PROP_VISIBLE) < 1 || key == 27 ||
+            (currentGame->getObjectCount() == 0 && currentGame->getObjectsCreated() == 0)) {
+            cv::destroyAllWindows();
+            GameOverScreen::show(gameHandler.getPlayerName(), gameHandler.getScore());
             break;
         }
     }
