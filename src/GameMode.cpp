@@ -17,6 +17,9 @@ std::list<GraphicalCircle> GameMode::getCircles() {
 int GameMode::getObjectCount() {
     return m_objectCount;
 }
+int GameMode::getObjectsCreated() {
+    return m_objectsCreated;
+}
 void GameMode::addFaceSquare(GraphicalSquare& newFace) {
     m_faceSquares.push_back(newFace);
 }
@@ -52,6 +55,7 @@ void GameMode::createObjects() {
             GraphicalCircle circle(randXCoord(),  {-1, -1, -1});
             addCircle(circle);
             --m_objectCount;
+            m_objectsCreated++;
         }
     }
 }
@@ -73,6 +77,7 @@ void GameMode::removeOutOfBounds() {
      m_circles.remove_if([&](GraphicalCircle& circle) {
          if (circle.checkOutOfBounds(frameheight)) {
              m_gameHandler.addScore(1);
+             m_objectsCreated--;
              return true;
          }
          return false;

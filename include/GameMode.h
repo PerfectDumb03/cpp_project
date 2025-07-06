@@ -16,6 +16,7 @@ protected:
     GameHandler& m_gameHandler;
     int m_frameCount = 0;
     int m_objectCount;
+    int m_objectsCreated = 0;
     std::vector<GraphicalSquare> m_faceSquares;
     std::list<GraphicalCircle> m_circles;
 
@@ -26,6 +27,7 @@ public:
     std::vector<GraphicalSquare> getFaceSquares();
     std::list<GraphicalCircle> getCircles();
     int getObjectCount();
+    int getObjectsCreated();
 
     void addFaceSquare(GraphicalSquare& newFace);
     void addCircle(GraphicalCircle& newCircle);
