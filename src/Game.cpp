@@ -52,12 +52,10 @@ void Game::run(GameHandler& gameHandler) {
         cap >> frame;
         if (frame.empty()) break;
         cv::flip(frame, frame, 1);
-        std::vector<cv::Rect> faces = getFaceRects(frame);
-        for (auto& face : faces) {
-            GraphicalSquare faceSquare(face, 2, {0, 0, 255});
-            currentGame->addFaceSquare(faceSquare);
-        }
 
+        std::vector<cv::Rect> faces = getFaceRects(frame);
+
+        currentGame->addFaceSquare(faces);
         currentGame->createObjects();
         currentGame->renderGraphics(frame);
         currentGame->checkFaceCollision();

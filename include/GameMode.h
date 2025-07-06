@@ -29,7 +29,7 @@ public:
     int getObjectCount();
     int getObjectsCreated();
 
-    void addFaceSquare(GraphicalSquare& newFace);
+    void addFaceSquare(std::vector<cv::Rect>& faceRects);
     void addCircle(GraphicalCircle& newCircle);
 
     virtual void resetFaceSquares();

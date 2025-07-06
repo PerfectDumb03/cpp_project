@@ -19,8 +19,11 @@ int GameMode::getObjectCount() {
 int GameMode::getObjectsCreated() {
     return m_objectsCreated;
 }
-void GameMode::addFaceSquare(GraphicalSquare& newFace) {
-    m_faceSquares.push_back(newFace);
+void GameMode::addFaceSquare(std::vector<cv::Rect>& faceRects) {
+    for (auto& face : faceRects) {
+        GraphicalSquare faceSquare(face, 2, {0, 0, 255});
+        m_faceSquares.push_back(faceSquare);
+    }
 }
 void GameMode::addCircle(GraphicalCircle& newCircle) {
     m_circles.push_back(newCircle);
