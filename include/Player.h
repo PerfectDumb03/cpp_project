@@ -9,10 +9,10 @@
 
 class Player {
 public:
-    Player() {};
+    Player() = default;
     virtual ~Player() = default;
 
-    void setName(std::string name);
+    void setName();
     std::string getName() const;
 
     void setScore(int score);

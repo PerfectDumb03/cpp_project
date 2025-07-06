@@ -16,9 +16,6 @@ public:
     GameHandler() = default;
     ~GameHandler() override = default;
 
-
-    void setPlayerNameFromInput();
-
     void setGameMode();
     int getGameMode() const;
 
@@ -27,7 +24,6 @@ public:
     int getObjectCount();
 
     void gameStartInput();
-    virtual void gameOver();
 
 protected:
     int gameMode = 0;

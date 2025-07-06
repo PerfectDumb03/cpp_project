@@ -2,12 +2,14 @@
 #include "../include/GameHandler.h"
 #include <string>
 
+#include "../include/GameOverScreen.h"
+
 int main() {
-    GameHandler gameMode;
+    GameHandler gameHandler;
     std::string cascadeFilePath = "../haarcascade_frontalface_default.xml";
     Game game(cascadeFilePath);
-    gameMode.gameStartInput();
-    game.run(gameMode);
-    gameMode.gameOver();
+    gameHandler.gameStartInput();
+    game.run(gameHandler);
+    GameOverScreen::show(gameHandler.getName(), gameHandler.getScore());
     return 0;
 }

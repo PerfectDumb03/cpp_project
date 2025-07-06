@@ -5,10 +5,11 @@
 #include <bits/ostream.tcc>
 
 #include "../include/Player.h"
+#include "../include/InputHandler.h"
 
 //Name
-void Player::setName(std::string name) {
-    m_playerName = name;
+void Player::setName() {
+    m_playerName = InputHandler::requestPlayerName();
 }
 
 std::string Player::getName() const {

@@ -1,14 +1,27 @@
 //
-// Created by Thomas on 03.07.2025.
+// Created by Thomas on 06.07.2025.
 //
 
-#include "../include/GameHandler.h"
+#include "../include/InputHandler.h"
 #include <limits>
-
+#include <iostream>
 
 #define MAX_OBJECT_COUNT 100
 
-void GameHandler::setGameMode() {
+std::string InputHandler::requestPlayerName() {
+    std::string name;
+    while (true) {
+        std::cout << "Please enter your name (whitespace allowed; maximum 14 characters): ";
+        std::getline(std::cin >> std::ws, name);
+        if (!name.empty() && name.length() <= 14) {
+            return name;
+        }
+        std::cout << "Name cannot be empty or longer than 14 characters. Try again.\n";
+    }
+}
+
+int InputHandler::requestGameMode() {
+    int gameMode;
     while (true) {
         std::cout << "Which gamemode do you want to play? Input an appropriate number.\n";
         std::cout << "1: Dodge balls\n";
@@ -25,32 +38,16 @@ void GameHandler::setGameMode() {
 
         if (gameMode == 1 || gameMode == 2) {
             std::cin.ignore();
-            break;
+            return gameMode;
         }
 
         std::cout << "Invalid gamemode. Try again.\n";
     }
 }
 
-int GameHandler::getGameMode() const {
-    return gameMode;
-}
-
-void GameHandler::setObjectCount() {
+int InputHandler::requestObjectCount(int gameMode) {
+    int objectCount;
     while (true) {
-        switch (gameMode) {
-            case 1:
-                std::cout << "How many balls do you want to dodge? Input an appropriate number: ";
-                break;
-            case 2:
-                std::cout << "How many squares do you want to catch? Input an appropriate number: ";
-                break;
-            default:
-                std::cout << "Invalid gamemode. Try again.\n";
-                setGameMode();
-                continue;
-        }
-
         std::cin >> objectCount;
 
         if (std::cin.fail()) {
@@ -66,17 +63,7 @@ void GameHandler::setObjectCount() {
         } else if (objectCount > MAX_OBJECT_COUNT) {
             std::cout << "Too many objects (max: " << MAX_OBJECT_COUNT << "). Try again.\n";
         } else {
-            break;
+            return objectCount;
         }
     }
-}
-
-int GameHandler::getObjectCount() {
-    return objectCount;
-}
-
-void GameHandler::gameStartInput() {
-    setName();
-    setGameMode();
-    setObjectCount();
 }
