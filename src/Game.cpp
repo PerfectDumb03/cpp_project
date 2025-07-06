@@ -1,11 +1,11 @@
 #include "../include/Game.h"
 #include <iostream>
 
-#include "../include/CatchSquares.h"
+
 #include "../include/GameHandlerOld.h"
 #include "../include/GraphicalSquare.h"
 #include "../include/GraphicalCircle.h"
-#include "../include/CatchBalls.h"
+#include "../include/GameModeFactory.h"
 
 Game::Game(const std::string& cascadePath) : frameWidth(0), frameHeight(0) {
     faceCascade.load(cascadePath);
@@ -49,7 +49,7 @@ std::vector<cv::Rect> Game::getFaceRects(cv::Mat& frame) {
 void Game::run(GameHandlerOld& gameHandler) {
     if (!initialize()) return;
     cv::Mat frame;
-    CatchBalls currentGame(gameHandler);
+    auto currentGame = GameModeFactory::create(gameHandler.getGameMode(), gameHandler);
     while (true) {
         cap >> frame;
         if (frame.empty()) break;
@@ -57,16 +57,16 @@ void Game::run(GameHandlerOld& gameHandler) {
         std::vector<cv::Rect> faces = getFaceRects(frame);
         for (auto& face : faces) {
             GraphicalSquare faceSquare(face, 2, {0, 0, 255});
-            currentGame.addFaceSquare(faceSquare);
+            currentGame->addFaceSquare(faceSquare);
         }
 
-        currentGame.createObjects();
-        currentGame.renderGraphics(frame);
-        currentGame.checkFaceCollision();
-        currentGame.move();
-        currentGame.removeOutOfBounds();
-        currentGame.resetFaceSquares();
-        if (currentGame.getObjectCount() == 0 && currentGame.getObjectsCreated() == 0) {
+        currentGame->createObjects();
+        currentGame->renderGraphics(frame);
+        currentGame->checkFaceCollision();
+        currentGame->move();
+        currentGame->removeOutOfBounds();
+        currentGame->resetFaceSquares();
+        if (currentGame->getObjectCount() == 0 && currentGame->getObjectsCreated() == 0) {
             cv::destroyWindow(windowName);
             break;
         }

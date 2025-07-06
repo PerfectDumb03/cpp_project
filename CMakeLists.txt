@@ -25,6 +25,7 @@ set(Includes
         include/CatchBalls.h
         include/GameOverScreen.h
         include/InputHandler.h
+        include/GameModeFactory.h
 )
 
 set(Sources
@@ -42,6 +43,7 @@ set(Sources
         src/CatchBalls.cpp
         src/GameOverScreen.cpp
         src/inputHandler.cpp
+        src/GameModeFactory.cpp
 )
 
 add_executable(FaceDetectionStarter "${Includes}" "${Sources}")
