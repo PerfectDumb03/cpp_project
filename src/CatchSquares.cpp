@@ -65,8 +65,7 @@ bool CatchSquares::circleChance() {
 }
 
 void CatchSquares::removeOutOfBounds() {
-    int frameHeight = 480; // ToDo: Use actual frame height from Game
-
+    int frameHeight = m_gameHandler.getFrameHeight();
     m_squares.remove_if([frameHeight](GraphicalSquare& square) {
         return square.checkOutOfBounds(frameHeight);
     });

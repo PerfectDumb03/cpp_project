@@ -34,7 +34,7 @@ void GameMode::resetFaceSquares() {
 int GameMode::randXCoord() {
     std::random_device rd;
     std::mt19937 gen(rd());
-    std::uniform_int_distribution<> dis(0, 680); //toDo Use framewidth from Game
+    std::uniform_int_distribution<> dis(0, m_gameHandler.getFrameWidth() - 50); //50 is max "width" of a circle
     return dis(gen);
 }
 void GameMode::renderGraphics(cv::Mat &frame) {
@@ -75,9 +75,8 @@ void GameMode::checkFaceCollision() {
 }
 
 void GameMode::removeOutOfBounds() {
-    int frameheight = 480; //ToDo add dynamic frame height
      m_circles.remove_if([&](GraphicalCircle& circle) {
-         if (circle.checkOutOfBounds(frameheight)) {
+         if (circle.checkOutOfBounds(m_gameHandler.getFrameHeight())) {
              m_gameHandler.addScore(1);
              m_objectsCreated--;
              return true;
