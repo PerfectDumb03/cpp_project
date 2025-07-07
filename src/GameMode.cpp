@@ -56,11 +56,9 @@ void GameMode::move() {
     }
 }
 void GameMode::createObjects() {
-    if (m_objectCount > 0) {
-        if (m_frameCount % 25 == 0) {
-            GraphicalCircle circle(randXCoord(),  {-1, -1, -1});
-            addCircle(circle);
-        }
+    if (m_frameCount % 25 == 0) {
+        GraphicalCircle circle(randXCoord(),  {-1, -1, -1});
+        addCircle(circle);
     }
 }
 void GameMode::checkFaceCollision() {
