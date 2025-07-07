@@ -15,14 +15,10 @@ std::list<GraphicalSquare> CatchSquares::getSquares() {
 }
 void CatchSquares::addSquare(GraphicalSquare& newSquare) {
     m_squares.push_back(newSquare);
+    m_objectsCreated++;
 }
 
 void CatchSquares::renderGraphics(cv::Mat &frame) {
-    if (m_objectCount <= 0) {
-        m_isGameOver = true;
-        return;
-    }
-
     for (auto& face : m_faceSquares) { //should be const for best practice
         face.draw(frame);
     }
@@ -35,8 +31,8 @@ void CatchSquares::renderGraphics(cv::Mat &frame) {
     ++m_frameCount;
 }
 
-void CatchSquares::createObjects() {
-    if (m_objectCount > 0) {
+void CatchSquares::createObjects() { //maybe use ObjectsCreated
+    if (m_objectsCreated < m_objectCount) {
         if (m_frameCount % 25 == 0) {
             if (circleChance()) {
                 GraphicalCircle circle(randXCoord(), {255, 0, 0});
@@ -48,6 +44,10 @@ void CatchSquares::createObjects() {
             }
         }
     }
+    if (m_objectsDestroyed == m_objectCount) {
+        m_isGameOver = true;
+    }
+
 }
 void CatchSquares::move() {
     for (auto& square : m_squares) {
@@ -72,14 +72,14 @@ void CatchSquares::removeOutOfBounds() {
     int frameHeight = m_gameHandler.getFrameHeight();
     m_squares.remove_if([frameHeight, this](GraphicalSquare& square) {
         if (square.checkOutOfBounds(frameHeight)) {
-            --m_objectCount;
+            m_objectsDestroyed++;
             return true;
         }
         return false;
     });
     m_circles.remove_if([frameHeight, this](GraphicalCircle& circle) {
         if (circle.checkOutOfBounds(frameHeight)) {
-            --m_objectCount;
+            m_objectsDestroyed++;
             return true;
         }
         return false;
@@ -91,7 +91,7 @@ void CatchSquares::checkFaceCollision() {
         m_squares.remove_if([&](GraphicalSquare& square) {
             if (square.checkCollision(face)) {
                 m_gameHandler.addScore(1);
-                --m_objectCount;
+                m_objectsDestroyed++;
                 return true;
             }
             return false;
@@ -99,7 +99,7 @@ void CatchSquares::checkFaceCollision() {
         m_circles.remove_if([&](GraphicalCircle& circle) {
             if (circle.checkCollision(face)) {
                 m_gameHandler.addScore(-1);
-                --m_objectCount;
+                m_objectsDestroyed++;
                 return true;
             }
             return false;

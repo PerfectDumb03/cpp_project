@@ -30,6 +30,7 @@ void GameMode::addFaceSquare(std::vector<cv::Rect>& faceRects) {
 }
 void GameMode::addCircle(GraphicalCircle& newCircle) {
     m_circles.push_back(newCircle);
+    m_objectsCreated++;
 }
 void GameMode::resetFaceSquares() {
     m_faceSquares.clear();

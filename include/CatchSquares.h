@@ -11,6 +11,7 @@ class GameHandler;
 
 class CatchSquares : public GameMode{
 private:
+    int m_objectsDestroyed = 0;
     std::list<GraphicalSquare> m_squares;
 
 public:
