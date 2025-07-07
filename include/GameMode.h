@@ -19,6 +19,7 @@ protected:
     int m_objectsCreated = 0;
     std::vector<GraphicalSquare> m_faceSquares;
     std::list<GraphicalCircle> m_circles;
+    bool m_isGameOver = false;
 
 public:
     GameMode(GameHandler& gameHandler);
@@ -28,6 +29,7 @@ public:
     std::list<GraphicalCircle> getCircles();
     int getObjectCount();
     int getObjectsCreated();
+    bool getGameState();
 
     void addFaceSquare(std::vector<cv::Rect>& faceRects);
     void addCircle(GraphicalCircle& newCircle);

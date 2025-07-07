@@ -78,7 +78,7 @@ void Game::run(GameHandler& gameHandler) {
         int key = cv::waitKey(10);
         // Break if the window is closed using the red X or ESC to exit
         if (cv::getWindowProperty(windowName, cv::WND_PROP_VISIBLE) < 1 || key == 27 ||
-            (currentGame->getObjectCount() == 0 && currentGame->getObjectsCreated() == 0)) {
+            currentGame->getGameState()) {
             cv::destroyAllWindows();
             GameOverScreen::show(gameHandler.getPlayerName(), gameHandler.getScore());
             break;

@@ -19,6 +19,9 @@ int GameMode::getObjectCount() {
 int GameMode::getObjectsCreated() {
     return m_objectsCreated;
 }
+bool GameMode::getGameState() {
+    return m_isGameOver;
+}
 void GameMode::addFaceSquare(std::vector<cv::Rect>& faceRects) {
     for (auto& face : faceRects) {
         GraphicalSquare faceSquare(face, 2, {0, 0, 255});
@@ -65,8 +68,7 @@ void GameMode::checkFaceCollision() {
     for (auto& face : m_faceSquares) {
         m_circles.remove_if([&](GraphicalCircle& circle) {
             if (circle.checkCollision(face)) {
-                m_objectCount = 0; //ToDO find better solution to end game
-                m_objectsCreated = 0;
+                m_isGameOver = true;
                 return true;
             }
             return false;
