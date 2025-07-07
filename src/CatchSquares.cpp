@@ -18,6 +18,11 @@ void CatchSquares::addSquare(GraphicalSquare& newSquare) {
 }
 
 void CatchSquares::renderGraphics(cv::Mat &frame) {
+    if (m_objectCount <= 0) {
+        m_isGameOver = true;
+        return;
+    }
+
     for (auto& face : m_faceSquares) { //should be const for best practice
         face.draw(frame);
     }
@@ -41,7 +46,6 @@ void CatchSquares::createObjects() {
                 GraphicalSquare square(randXCoord(),  {0, 255, 0});
                 addSquare(square);
             }
-            --m_objectCount;
         }
     }
 }
@@ -66,12 +70,19 @@ bool CatchSquares::circleChance() {
 
 void CatchSquares::removeOutOfBounds() {
     int frameHeight = m_gameHandler.getFrameHeight();
-    m_squares.remove_if([frameHeight](GraphicalSquare& square) {
-        return square.checkOutOfBounds(frameHeight);
+    m_squares.remove_if([frameHeight, this](GraphicalSquare& square) {
+        if (square.checkOutOfBounds(frameHeight)) {
+            --m_objectCount;
+            return true;
+        }
+        return false;
     });
-
-    m_circles.remove_if([frameHeight](GraphicalCircle& circle) {
-        return circle.checkOutOfBounds(frameHeight);
+    m_circles.remove_if([frameHeight, this](GraphicalCircle& circle) {
+        if (circle.checkOutOfBounds(frameHeight)) {
+            --m_objectCount;
+            return true;
+        }
+        return false;
     });
 }
 
@@ -80,6 +91,7 @@ void CatchSquares::checkFaceCollision() {
         m_squares.remove_if([&](GraphicalSquare& square) {
             if (square.checkCollision(face)) {
                 m_gameHandler.addScore(1);
+                --m_objectCount;
                 return true;
             }
             return false;
@@ -87,6 +99,7 @@ void CatchSquares::checkFaceCollision() {
         m_circles.remove_if([&](GraphicalCircle& circle) {
             if (circle.checkCollision(face)) {
                 m_gameHandler.addScore(-1);
+                --m_objectCount;
                 return true;
             }
             return false;

@@ -59,8 +59,6 @@ void GameMode::createObjects() {
         if (m_frameCount % 25 == 0) {
             GraphicalCircle circle(randXCoord(),  {-1, -1, -1});
             addCircle(circle);
-            --m_objectCount;
-            m_objectsCreated++;
         }
     }
 }
