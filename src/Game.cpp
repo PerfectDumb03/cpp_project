@@ -28,7 +28,6 @@ bool Game::initialize(GameHandler& gameHandler) {
         cap.set(cv::CAP_PROP_FRAME_WIDTH, frameWidth);
         gameHandler.setFrameHeight(frameHeight);
         cap.set(cv::CAP_PROP_FRAME_HEIGHT, frameHeight);
-        std::cout << "Frame size: " << frameWidth << "x" << frameHeight << std::endl;
     }
     if (faceCascade.empty()) {
         std::cerr << "Error: Could not load Haar cascade file." << std::endl;
