@@ -30,4 +30,5 @@ void GameOverScreen::show(const std::string& playerName, int score) {
     // Show image
     cv::imshow("Game Over", gameOverFrame);
     cv::waitKey();
+    cv::destroyWindow("Game Over");
 }
