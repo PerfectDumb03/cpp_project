@@ -21,7 +21,7 @@ set(Includes
         include/ShapeSquare.h
         include/CatchSquares.h
         include/GameMode.h
-        include/CatchBalls.h
+        include/DogeBalls.h
         include/GameOverScreen.h
         include/InputHandler.h
         include/GameModeFactory.h
@@ -41,7 +41,7 @@ set(Sources
         src/ShapeSquare.cpp
         src/CatchSquares.cpp
         src/GameMode.cpp
-        src/CatchBalls.cpp
+        src/DogeBalls.cpp
         src/GameOverScreen.cpp
         src/inputHandler.cpp
         src/GameModeFactory.cpp

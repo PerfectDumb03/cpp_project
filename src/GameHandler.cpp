@@ -13,7 +13,9 @@ GameHandler::GameHandler(Player& player, GameSettings& settings)
 void GameHandler::gameStartInput() {
     m_player.setName();
     m_gameSettings.setGameMode();
-    m_gameSettings.setObjectCount();
+    if (m_gameSettings.getGameMode() == 2) {
+        m_gameSettings.setObjectCount();
+    }
 }
 
 int GameHandler::getGameMode() const {
