@@ -7,15 +7,8 @@
 #include "../include/Leaderboard.h"
 
 int main() {
-    Player player;
-    GameSettings gameSettings;
-    GameHandler gameHandler(player, gameSettings);
     std::string cascadeFilePath = "../haarcascade_frontalface_default.xml";
     Game game(cascadeFilePath);
-    gameHandler.gameStartInput();
-    game.run(gameHandler);
-    Leaderboard leaderboard("../leaderboard.txt");
-    leaderboard.addPlayer(gameHandler.getGameMode() , gameHandler.getPlayerName(), gameHandler.getScore());
-    leaderboard.printLeaderboardByGamemode(gameHandler.getGameMode());
+    game.loop();
     return 0;
 }
