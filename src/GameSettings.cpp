@@ -11,20 +11,11 @@ int GameSettings::getGameMode() const {
 }
 
 void GameSettings::setObjectCount() {
-    do {
-        switch (m_gameMode) {
-        case 1:
-            std::cout << "How many balls do you want to dodge? Input an appropriate number: ";
-            break;
-        case 2:
-            std::cout << "How many squares do you want to catch? Input an appropriate number: ";
-            break;
-        default:
-            std::cout << "Invalid gamemode. Try again.\n";
-            setGameMode();
-        }
-    } while (m_gameMode != 1 && m_gameMode != 2);
-    m_objectCount = InputHandler::requestObjectCount(m_gameMode);
+    if (m_gameMode != 2) {
+        std::cout << "This gamemode does not require an object count.\n";
+    } else {
+        m_objectCount = InputHandler::requestObjectCount();
+    }
 }
 
 int GameSettings::getObjectCount() const {

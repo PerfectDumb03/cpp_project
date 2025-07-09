@@ -16,12 +16,19 @@ std::string InputHandler::requestPlayerName() {
     }
 }
 
+//For new gameMode implement input for game here
+const std::map<int, std::string> InputHandler::gameModes = {
+    {1, "DodgeBalls"},
+    {2, "CatchSquares"}
+};
+
 int InputHandler::requestGameMode() {
     int gameMode;
     while (true) {
         std::cout << "Which gamemode do you want to play? Input an appropriate number.\n";
-        std::cout << "1: Dodge balls\n";
-        std::cout << "2: Catch squares\n";
+        for (const auto& [key, value] : gameModes) {
+            std::cout << key << ": " << value << "\n";
+        }
         std::cin >> gameMode;
 
         if (std::cin.fail()) {
@@ -32,7 +39,7 @@ int InputHandler::requestGameMode() {
             continue;
         }
 
-        if (gameMode == 1 || gameMode == 2) {
+        if (gameModes.find(gameMode) != gameModes.end()) {
             std::cin.ignore();
             return gameMode;
         }
@@ -41,9 +48,10 @@ int InputHandler::requestGameMode() {
     }
 }
 
-int InputHandler::requestObjectCount(int gameMode) {
+int InputHandler::requestObjectCount() {
     int objectCount;
     while (true) {
+        std::cout << "How many objects do you want to catch? (1 - " << MAX_OBJECT_COUNT << ")\n";
         std::cin >> objectCount;
 
         if (std::cin.fail()) {
