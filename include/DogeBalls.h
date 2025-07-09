@@ -6,9 +6,9 @@
 #define CATCHBALLS_H
 #include "GameMode.h"
 
-class CatchBalls: public GameMode {
+class DogeBalls: public GameMode {
 public:
-    CatchBalls(GameHandler& gameHandler);
-    ~CatchBalls() = default;
+    DogeBalls(GameHandler& gameHandler);
+    ~DogeBalls() = default;
 };
 #endif //CATCHBALLS_H
