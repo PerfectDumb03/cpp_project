@@ -11,8 +11,11 @@ public:
     Game(const std::string& cascadePath);
     virtual ~Game();
     bool initialize(GameHandler& gameHandler);
+    void loop();
+    void restartLoop();
     void run(GameHandler& gameMode);
     std::vector<cv::Rect> getFaceRects(cv::Mat& frame);
+
 private:
     void executeGameLoop(GameMode* currentGame, cv::Mat& frame);
     void showScoreIngame(GameHandler& gameHandler, cv::Mat& frame);
@@ -21,6 +24,7 @@ private:
     const std::string windowName = "Face Detection";
     int frameWidth;
     int frameHeight;
+    bool breakLoop = false;
 };
 
 #endif // GAME_H

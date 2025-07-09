@@ -1,8 +1,9 @@
 #include "../include/Game.h"
-#include <iostream>
-
+#include "../include/Leaderboard.h"
 #include "../include/GameModeFactory.h"
 #include "../include/GameOverScreen.h"
+
+#include <iostream>
 
 Game::Game(const std::string& cascadePath) : frameWidth(0), frameHeight(0) {
     faceCascade.load(cascadePath);
@@ -59,6 +60,34 @@ void Game::showScoreIngame(GameHandler& gameHandler, cv::Mat& frame) {
     cv::Size textSize = cv::getTextSize(scoreText, font, 1.5, 2, 0);
     cv::Point scoreTextPos((frame.cols - textSize.width) / 2, 100);
     cv::putText(frame, scoreText, cv::Point(5,30), font, 1.0, cv::Scalar(255, 0, 255), 2);
+}
+
+void Game::restartLoop() {
+    std::cout << "Press 0 to end game.\nPress 1 to play new game." << std::endl;
+    int input;
+    std::cin >> input;
+    if (input == 0) {
+        breakLoop = true;
+    } else if (input == 1) {
+        breakLoop = false;
+    } else {
+        std::cout << "Invalid input. Try again.\n";
+        restartLoop();
+    }
+}
+
+void Game::loop() {
+    while (breakLoop == false) {
+        Player player;
+        GameSettings gameSettings;
+        GameHandler gameHandler(player, gameSettings);
+        gameHandler.gameStartInput();
+        run(gameHandler);
+        Leaderboard leaderboard("../leaderboard.txt");
+        leaderboard.addPlayer(gameHandler.getGameMode() , gameHandler.getPlayerName(), gameHandler.getScore());
+        leaderboard.printLeaderboardByGamemode(gameHandler.getGameMode());
+        restartLoop();
+    }
 }
 
 void Game::run(GameHandler& gameHandler) {
