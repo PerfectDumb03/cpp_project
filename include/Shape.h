@@ -1,13 +1,9 @@
-//
-// Created by Luca on 01.07.2025.
-//
-
 #ifndef SHAPE_H
 #define SHAPE_H
+
 #include <array>
 #include <opencv2/core/types.hpp>
 #include <random>
-
 
 class ShapeSquare;
 

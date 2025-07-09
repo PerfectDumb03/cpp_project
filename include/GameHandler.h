@@ -1,7 +1,3 @@
-//
-// Created by Thomas on 06.07.2025.
-//
-
 #ifndef GAMEHANDLERNEW_H
 #define GAMEHANDLERNEW_H
 

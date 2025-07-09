@@ -1,7 +1,3 @@
-//
-// Created by lucan on 02.07.2025.
-//
-
 #include "../include/GraphicalCircle.h"
 #include <opencv2/imgproc.hpp>
 

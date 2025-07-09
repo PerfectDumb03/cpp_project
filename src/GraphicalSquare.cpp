@@ -1,9 +1,4 @@
-//
-// Created by Luca on 01.07.2025.
-//
-
 #include "../include/GraphicalSquare.h"
-
 
 GraphicalSquare::GraphicalSquare(int x, int y, int height, int width, int thickness, std::array<int, 3> color)
     :ShapeSquare(x, y, height, width, thickness, color){

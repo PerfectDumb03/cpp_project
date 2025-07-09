@@ -1,7 +1,3 @@
-//
-// Created by Thomas on 06.07.2025.
-//
-
 #include "../include/GameHandler.h"
 #include "../include/Player.h"
 #include "../include/GameSettings.h"

@@ -1,7 +1,3 @@
-//
-// Created by Luca on 06.07.2025.
-//
-
 #ifndef GAMEMODEFACTORY_H
 #define GAMEMODEFACTORY_H
 

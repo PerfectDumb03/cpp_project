@@ -1,13 +1,8 @@
-//
-// Created by lucan on 02.07.2025.
-//
-
 #ifndef GRAPHICALCIRCLE_H
 #define GRAPHICALCIRCLE_H
-#include <array>
 
 #include "ShapeCircle.h"
-
+#include <array>
 
 class GraphicalCircle: public ShapeCircle {
 

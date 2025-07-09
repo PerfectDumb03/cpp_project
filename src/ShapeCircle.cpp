@@ -1,13 +1,7 @@
-//
-// Created by lucan on 02.07.2025.
-//
-
-#include <algorithm>
-#include <cmath>
 #include "../include/ShapeCircle.h"
 #include "../include/ShapeSquare.h"
-
-
+#include <algorithm>
+#include <cmath>
 
 ShapeCircle::ShapeCircle(int x, int y, int radius, int thickness, std::array<int,3> color)
     :Shape(x, y, thickness, color), m_radius(radius) {

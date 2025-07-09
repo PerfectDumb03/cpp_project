@@ -1,7 +1,3 @@
-//
-// Created by Thomas on 06.07.2025.
-//
-
 #ifndef GAMESETTINGS_H
 #define GAMESETTINGS_H
 

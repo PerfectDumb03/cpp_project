@@ -1,10 +1,4 @@
-//
-// Created by Luca on 01.07.2025.
-//
-
 #include "../include/ShapeSquare.h"
-
-
 
 ShapeSquare::ShapeSquare(int x, int y, int height, int width, int thickness, std::array<int,3> color)
 :Shape(x, y, thickness, color), m_height(height), m_width(width){

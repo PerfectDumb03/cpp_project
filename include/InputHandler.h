@@ -1,7 +1,3 @@
-//
-// Created by Thomas on 06.07.2025.
-//
-
 #ifndef INPUTHANDLER_H
 #define INPUTHANDLER_H
 

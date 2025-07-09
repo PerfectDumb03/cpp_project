@@ -1,9 +1,6 @@
-//
-// Created by Luca on 04.07.2025.
-//
-
 #ifndef GAMEMODE_H
 #define GAMEMODE_H
+
 #include "../include/GraphicalSquare.h"
 #include "../include/GraphicalCircle.h"
 #include <opencv2/opencv.hpp>

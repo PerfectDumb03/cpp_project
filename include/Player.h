@@ -1,7 +1,3 @@
-//
-// Created by tvahl on 02.07.2025.
-//
-
 #ifndef PLAYER_H
 #define PLAYER_H
 

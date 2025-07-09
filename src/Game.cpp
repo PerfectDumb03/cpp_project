@@ -2,7 +2,6 @@
 #include "../include/Leaderboard.h"
 #include "../include/GameModeFactory.h"
 #include "../include/GameOverScreen.h"
-
 #include <iostream>
 
 Game::Game(const std::string& cascadePath) : frameWidth(0), frameHeight(0) {

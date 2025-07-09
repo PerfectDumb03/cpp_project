@@ -1,16 +1,12 @@
-//
-// Created by Thomas on 06.07.2025.
-//
-
 #ifndef LEADERBOARD_H
 #define LEADERBOARD_H
+
+#include "GameMode.h"
 #include <string>
 #include <vector>
 #include <iostream>
 #include <fstream>
 #include <sstream>
-
-#include "GameMode.h"
 
 #endif //LEADERBOARD_H
 class Leaderboard {

@@ -1,9 +1,6 @@
-//
-// Created by lucan on 02.07.2025.
-//
-
 #ifndef SHAPECIRCLE_H
 #define SHAPECIRCLE_H
+
 #include "Shape.h"
 
 class ShapeSquare; //forward declaration

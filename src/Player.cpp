@@ -1,11 +1,7 @@
-//
-// Created by Thomas on 03.07.2025.
-//
-#include <iostream>
-#include <bits/ostream.tcc>
-
 #include "../include/Player.h"
 #include "../include/InputHandler.h"
+#include <iostream>
+#include <bits/ostream.tcc>
 
 //Name
 void Player::setName() {

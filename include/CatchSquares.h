@@ -1,7 +1,3 @@
-//
-// Created by Luca on 03.07.2025.
-//
-
 #ifndef CATCHSQUARES_H
 #define CATCHSQUARES_H
 

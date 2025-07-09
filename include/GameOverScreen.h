@@ -1,7 +1,3 @@
-//
-// Created by Thomas on 06.07.2025.
-//
-
 #ifndef GAMEOVERSCREEN_H
 #define GAMEOVERSCREEN_H
 

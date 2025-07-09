@@ -1,12 +1,7 @@
-//
-// Created by Luca on 01.07.2025.
-//
-
 #ifndef SHAPESQUARE_H
 #define SHAPESQUARE_H
 
-
-#include "../include/Shape.h"
+#include "Shape.h"
 
 class ShapeSquare : public Shape {
 protected:

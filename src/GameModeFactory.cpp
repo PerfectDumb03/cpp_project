@@ -1,7 +1,3 @@
-//
-// Created by Luca on 06.07.2025.
-//
-
 #include "../include/GameModeFactory.h"
 #include "../include/CatchSquares.h"
 #include "../include/DogeBalls.h"

@@ -1,10 +1,6 @@
-//
-// Created by Thomas on 06.07.2025.
-//
-#include <iostream>
-
 #include "../include/GameSettings.h"
 #include "../include/InputHandler.h"
+#include <iostream>
 
 void GameSettings::setGameMode() {
     m_gameMode = InputHandler::requestGameMode();
