@@ -96,6 +96,16 @@ void Leaderboard::printLeaderboardByGamemode(int mode) {
     for (const auto& player : filtered) {
         std::cout << player.score << "\t" << player.order << "\t" << player.name << "\n";
     }
+
+    std::cout << "Type 'esc' to exit: " << std::endl;
+    while (true) {
+        std::string input;
+        std::getline(std::cin, input);
+        if (input == "esc") {
+            break;
+        }
+        std::cout << "Invalid input. Type 'esc' to exit: " << std::endl;
+    }
 }
 
 const std::vector<Leaderboard::PlayerData>& Leaderboard::getPlayerData() {
