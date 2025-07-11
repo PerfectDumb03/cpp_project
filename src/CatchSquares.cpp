@@ -5,15 +5,6 @@
 CatchSquares::CatchSquares(GameHandler& gameHandler): GameMode(gameHandler) {
 }
 
-
-std::list<GraphicalSquare> CatchSquares::getSquares() {
-    return m_squares;
-}
-void CatchSquares::addSquare(GraphicalSquare& newSquare) {
-    m_squares.push_back(newSquare);
-    m_objectsCreated++;
-}
-
 void CatchSquares::renderGraphics(cv::Mat &frame) {
     for (auto& face : m_faceSquares) { //should be const for best practice
         face.draw(frame);
@@ -52,16 +43,6 @@ void CatchSquares::move() {
     for (auto& circle : m_circles) {
         circle.move();
     }
-}
-
-bool CatchSquares::circleChance() {
-    std::random_device rd;
-    std::mt19937 gen(rd());
-    std::uniform_int_distribution<> dis(0, 100);
-    if (dis(gen) < 33) {
-        return true;
-    }
-    return false;
 }
 
 void CatchSquares::removeOutOfBounds() {

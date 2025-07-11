@@ -18,6 +18,13 @@ int GameMode::getObjectsCreated() {
 bool GameMode::getGameState() {
     return m_isGameOver;
 }
+std::list<GraphicalSquare> GameMode::getSquares() {
+    return m_squares;
+}
+void GameMode::addSquare(GraphicalSquare& newSquare) {
+    m_squares.push_back(newSquare);
+    m_objectsCreated++;
+}
 void GameMode::addFaceSquare(std::vector<cv::Rect>& faceRects) {
     for (auto& face : faceRects) {
         GraphicalSquare faceSquare(face, 2, {0, 0, 255});
@@ -34,7 +41,7 @@ void GameMode::resetFaceSquares() {
 int GameMode::randXCoord() {
     std::random_device rd;
     std::mt19937 gen(rd());
-    std::uniform_int_distribution<> dis(0, m_gameHandler.getFrameWidth() - 50); //50 is max "width" of a circle
+    std::uniform_int_distribution<> dis(0, m_gameHandler.getFrameWidth() - 75); //75 is max width of a shape
     return dis(gen);
 }
 void GameMode::renderGraphics(cv::Mat &frame) {
@@ -78,4 +85,14 @@ void GameMode::removeOutOfBounds() {
          }
          return false;
      });
+}
+
+bool GameMode::circleChance() {
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_int_distribution<> dis(0, 100);
+    if (dis(gen) < 33) {
+        return true;
+    }
+    return false;
 }

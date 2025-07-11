@@ -15,6 +15,7 @@ protected:
     int m_objectCount;
     int m_objectsCreated = 0;
     std::vector<GraphicalSquare> m_faceSquares;
+    std::list<GraphicalSquare> m_squares;
     std::list<GraphicalCircle> m_circles;
     bool m_isGameOver = false;
 
@@ -24,11 +25,13 @@ public:
 
     std::vector<GraphicalSquare> getFaceSquares();
     std::list<GraphicalCircle> getCircles();
+    std::list<GraphicalSquare> getSquares();
     int getObjectCount();
     int getObjectsCreated();
     bool getGameState();
 
     void addFaceSquare(std::vector<cv::Rect>& faceRects);
+    void addSquare(GraphicalSquare& newSquare);
     void addCircle(GraphicalCircle& newCircle);
 
     virtual void resetFaceSquares();
@@ -39,6 +42,7 @@ public:
     virtual void createObjects();
     virtual void checkFaceCollision();
     virtual void removeOutOfBounds();
+    virtual bool circleChance();
 };
 
 #endif //GAMEMODE_H

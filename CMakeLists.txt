@@ -28,6 +28,7 @@ set(Includes
         include/GameHandler.h
         include/GameSettings.h
         include/Leaderboard.h
+        include/CatchObjects.h
 )
 
 set(Sources
@@ -48,6 +49,7 @@ set(Sources
         src/GameHandler.cpp
         src/GameSettings.cpp
         src/Leaderboard.cpp
+        src/CatchObjects.cpp
 )
 
 add_executable(FaceDetectionStarter "${Includes}" "${Sources}")
